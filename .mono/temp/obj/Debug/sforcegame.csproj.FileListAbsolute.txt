@@ -1,0 +1,6 @@
+C:\Godot_Projects\sforcegame\.mono\temp\obj\Debug\sforcegame.csprojAssemblyReference.cache
+C:\Godot_Projects\sforcegame\.mono\temp\obj\Debug\sforcegame.csproj.CoreCompileInputs.cache
+C:\Godot_Projects\sforcegame\.mono\temp\bin\Debug\sforcegame.dll
+C:\Godot_Projects\sforcegame\.mono\temp\bin\Debug\sforcegame.pdb
+C:\Godot_Projects\sforcegame\.mono\temp\obj\Debug\sforcegame.dll
+C:\Godot_Projects\sforcegame\.mono\temp\obj\Debug\sforcegame.pdb

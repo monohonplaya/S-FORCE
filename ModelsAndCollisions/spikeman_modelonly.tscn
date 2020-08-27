@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://glb/spikeman.glb" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "slither-loop"
+length = 0.466667
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature003/Skeleton:tail")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -1.98523e-23, 0, -2.98023e-08, -0.0699504, 4.68923e-17, 6.58782e-17, 0.99755, 1, 1, 1, 0.0666667, 1, -9.31323e-09, 5.96046e-08, 7.45058e-09, -0.0692216, -0.00142652, 0.143965, 0.987158, 1, 1, 1, 0.133333, 1, -3.72529e-09, 0, 0, -0.0672198, -0.00274136, 0.276659, 0.95861, 1, 1, 1, 0.2, 1, -3.72528e-09, 0, -1.49012e-08, -0.0694539, -0.0011784, 0.118925, 0.99047, 1, 1, 1, 0.266667, 1, -1.86265e-09, 0, 0, -0.0694539, 0.0011784, -0.118925, 0.99047, 1, 1, 1, 0.333333, 1, 1.11759e-08, 0, -1.49012e-08, -0.0672198, 0.00274136, -0.276659, 0.95861, 1, 1, 1, 0.4, 1, 7.45058e-09, 0, -1.49012e-08, -0.0688768, 0.0017293, -0.174521, 0.98224, 1, 1, 1, 0.466667, 1, -1.98523e-23, 0, -2.98023e-08, -0.0699504, 4.68923e-17, 6.58782e-17, 0.99755, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature003/Skeleton:torso")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, 1.32349e-23, 0, 0, 0.145107, -3.30361e-17, -4.50561e-17, 0.989416, 1, 1, 1, 0.0666667, 1, 7.45058e-09, 0, 0, 0.144299, 0.0174524, -0.103934, 0.983906, 1, 1, 1, 0.133333, 1, 0, 2.98023e-08, 1.49012e-08, 0.142071, 0.0337004, -0.200696, 0.968711, 1, 1, 1, 0.2, 1, 1.66533e-15, 5.96046e-08, 2.98023e-08, 0.144551, 0.0144794, -0.0862295, 0.985627, 1, 1, 1, 0.266667, 1, -7.45058e-09, 5.96046e-08, 2.98023e-08, 0.144551, -0.0144794, 0.0862296, 0.985627, 1, 1, 1, 0.333333, 1, 0, 2.98023e-08, 1.49012e-08, 0.142071, -0.0337004, 0.200696, 0.968711, 1, 1, 1, 0.4, 1, 7.45058e-09, 0, 0, 0.143917, -0.0211613, 0.126023, 0.981304, 1, 1, 1, 0.466667, 1, 1.32349e-23, 0, 0, 0.145107, -3.30361e-17, -4.50561e-17, 0.989416, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature003/Skeleton:mouthtop")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, -3.19731e-09, -0.00311308, 0.00821053, -0.0161226, -2.84532e-16, -6.27836e-09, 0.99987, 1, 1, 1, 0.466667, 1, -3.19731e-09, -0.00311308, 0.00821053, -0.0161226, -2.84532e-16, -6.27836e-09, 0.99987, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature003/Skeleton:mouthl")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, 0, 0, 0, 4.59273e-08, -4.14385e-07, 0.0119354, 0.999929, 1, 1, 1, 0.466667, 1, 0, 0, 0, 4.59273e-08, -4.14385e-07, 0.0119354, 0.999929, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature003/Skeleton:mouthr")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 4.59051e-08, 4.12523e-07, -0.0119354, 0.999929, 1, 1, 1, 0.466667, 1, 0, 0, 0, 4.59051e-08, 4.12523e-07, -0.0119354, 0.999929, 1, 1, 1 )
+tracks/5/type = "transform"
+tracks/5/path = NodePath("Armature003/Skeleton:head")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/keys = PoolRealArray( 0, 1, 2.7315e-16, 0.448476, -1.15793, 0.221882, -1.22943e-16, 9.00614e-19, 0.975073, 1, 1, 1, 0.133333, 1, 2.7315e-16, 0.448476, -1.15793, 0.221205, -0.0122003, 0.0771018, 0.972098, 1, 1, 1, 0.2, 1, 2.7315e-16, 0.448476, -1.15793, 0.221758, -0.00523955, 0.0331122, 0.974525, 1, 1, 1, 0.266667, 1, 2.7315e-16, 0.448476, -1.15793, 0.221758, 0.00523955, -0.0331122, 0.974525, 1, 1, 1, 0.333333, 1, 2.7315e-16, 0.448476, -1.15793, 0.221205, 0.0122003, -0.0771018, 0.972098, 1, 1, 1, 0.4, 1, 2.7315e-16, 0.448476, -1.15793, 0.221618, 0.00762645, -0.0481966, 0.973912, 1, 1, 1, 0.466667, 1, 2.7315e-16, 0.448476, -1.15793, 0.221882, -1.22943e-16, 9.00614e-19, 0.975073, 1, 1, 1 )
+
+[node name="spikeman" instance=ExtResource( 1 )]
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "slither-loop"
+anims/slither-loop = SubResource( 1 )

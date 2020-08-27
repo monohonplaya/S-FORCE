@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://glb/umarucube.glb" type="PackedScene" id=1]
+[ext_resource path="res://scripts/rotateplatform.cs" type="Script" id=2]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1 )
+
+[node name="umarucube" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_rotateSpeed = 0.7
+_rotateVec = Vector3( 1, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="umarucube" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="umarucube/StaticBody" index="0"]
+shape = SubResource( 1 )

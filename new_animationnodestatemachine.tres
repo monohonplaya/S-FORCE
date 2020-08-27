@@ -1,0 +1,18 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=4 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "jump-air-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=3]
+auto_advance = true
+
+[resource]
+states/jump/node = SubResource( 2 )
+states/jump/position = Vector2( 236.2, 154.026 )
+states/jump-air-loop/node = SubResource( 1 )
+states/jump-air-loop/position = Vector2( 419.4, 144.125 )
+transitions = [ "jump", "jump-air-loop", SubResource( 3 ) ]
+graph_offset = Vector2( -25, -11 )

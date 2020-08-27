@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://glb/texat.material" type="Material" id=1]
+[ext_resource path="res://scripts/topkek.cs" type="Script" id=2]
+
+
+
+
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "chips"
+surfaces/0 = {
+"aabb": AABB( -0.869447, -1.30121, -0.423613, 1.73889, 2.60243, 0.847226 ),
+"array_data": PoolByteArray( 16, 148, 94, 191, 67, 119, 41, 63, 208, 227, 216, 190, 174, 27, 164, 0, 162, 3, 84, 127, 42, 50, 37, 57, 16, 148, 94, 191, 67, 119, 41, 191, 208, 227, 216, 190, 174, 229, 164, 0, 178, 204, 85, 127, 48, 50, 43, 57, 16, 148, 94, 191, 67, 119, 41, 191, 208, 227, 216, 62, 174, 229, 92, 0, 94, 3, 84, 127, 100, 50, 43, 57, 16, 148, 94, 191, 67, 119, 41, 63, 208, 227, 216, 62, 174, 27, 92, 0, 78, 204, 85, 127, 95, 50, 36, 57, 16, 148, 94, 63, 67, 119, 41, 63, 208, 227, 216, 190, 82, 27, 164, 0, 160, 15, 175, 127, 136, 50, 252, 56, 16, 148, 94, 63, 67, 119, 41, 191, 208, 227, 216, 190, 82, 229, 164, 0, 160, 225, 180, 127, 169, 50, 80, 57, 16, 148, 94, 191, 67, 119, 41, 191, 208, 227, 216, 190, 174, 229, 164, 0, 160, 15, 81, 127, 14, 53, 75, 57, 16, 148, 94, 191, 67, 119, 41, 63, 208, 227, 216, 190, 174, 27, 164, 0, 160, 225, 76, 127, 254, 52, 246, 56, 16, 148, 94, 63, 67, 119, 41, 63, 208, 227, 216, 62, 82, 27, 92, 0, 94, 3, 172, 127, 42, 50, 37, 57, 16, 148, 94, 63, 67, 119, 41, 191, 208, 227, 216, 62, 82, 229, 92, 0, 78, 204, 171, 127, 47, 50, 43, 57, 16, 148, 94, 63, 67, 119, 41, 191, 208, 227, 216, 190, 82, 229, 164, 0, 162, 3, 172, 127, 100, 50, 43, 57, 16, 148, 94, 63, 67, 119, 41, 63, 208, 227, 216, 190, 82, 27, 164, 0, 178, 204, 171, 127, 95, 50, 36, 57, 16, 148, 94, 191, 67, 119, 41, 63, 208, 227, 216, 62, 174, 27, 92, 0, 96, 12, 81, 127, 136, 50, 250, 56, 16, 148, 94, 191, 67, 119, 41, 191, 208, 227, 216, 62, 174, 229, 92, 0, 96, 222, 75, 127, 181, 50, 78, 57, 16, 148, 94, 63, 67, 119, 41, 191, 208, 227, 216, 62, 82, 229, 92, 0, 96, 12, 175, 127, 20, 53, 71, 57, 16, 148, 94, 63, 67, 119, 41, 63, 208, 227, 216, 62, 82, 27, 92, 0, 96, 222, 181, 127, 254, 52, 242, 56, 16, 148, 94, 63, 47, 142, 166, 63, 0, 0, 0, 128, 71, 105, 0, 0, 8, 251, 130, 127, 66, 50, 33, 57, 16, 148, 94, 191, 47, 142, 166, 191, 0, 0, 0, 128, 185, 151, 0, 0, 105, 186, 250, 127, 203, 50, 119, 57, 16, 148, 94, 63, 47, 142, 166, 191, 0, 0, 0, 128, 71, 151, 0, 0, 105, 70, 249, 127, 31, 53, 111, 57, 16, 148, 94, 63, 47, 142, 166, 191, 0, 0, 0, 128, 71, 151, 0, 0, 151, 186, 4, 127, 185, 50, 121, 57, 16, 148, 94, 191, 47, 142, 166, 191, 0, 0, 0, 128, 185, 151, 0, 0, 151, 70, 5, 127, 22, 53, 115, 57, 16, 148, 94, 191, 47, 142, 166, 63, 0, 0, 0, 128, 185, 105, 0, 0, 248, 251, 126, 127, 66, 50, 33, 57, 16, 148, 94, 191, 47, 142, 166, 63, 0, 0, 0, 128, 185, 105, 0, 0, 105, 70, 7, 127, 115, 50, 209, 56, 16, 148, 94, 63, 47, 142, 166, 63, 0, 0, 0, 128, 71, 105, 0, 0, 105, 186, 6, 127, 243, 52, 202, 56, 16, 148, 94, 191, 47, 142, 166, 191, 0, 0, 0, 128, 185, 151, 0, 0, 8, 251, 126, 127, 77, 50, 46, 57, 16, 148, 94, 63, 47, 142, 166, 191, 0, 0, 0, 128, 71, 151, 0, 0, 248, 251, 130, 127, 76, 50, 46, 57, 16, 148, 94, 63, 47, 142, 166, 63, 0, 0, 0, 128, 71, 105, 0, 0, 151, 70, 251, 127, 121, 50, 211, 56, 16, 148, 94, 191, 47, 142, 166, 63, 0, 0, 0, 128, 185, 105, 0, 0, 151, 186, 252, 127, 246, 52, 206, 56 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 12, 0, 15, 0, 14, 0, 8, 0, 16, 0, 11, 0, 13, 0, 18, 0, 17, 0, 13, 0, 14, 0, 18, 0, 5, 0, 20, 0, 19, 0, 5, 0, 6, 0, 20, 0, 0, 0, 21, 0, 3, 0, 22, 0, 15, 0, 12, 0, 22, 0, 23, 0, 15, 0, 2, 0, 24, 0, 1, 0, 10, 0, 25, 0, 9, 0, 26, 0, 7, 0, 4, 0, 26, 0, 27, 0, 7, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 60,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 28
+}
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.744333
+
+[sub_resource type="Animation" id=3]
+resource_name = "pickedup"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("chips:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 30 ), Vector3( 0, -900, 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("chips:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 3, 0 ), Vector3( 0, 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("chips:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, 0.5, 0.5 ), Vector3( 0.3, 0.3, 0.05 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("chips:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.2, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 30 ), Vector3( 0, 360, 15 ), Vector3( 0, 720, 30 ) ]
+}
+
+[sub_resource type="SphereShape" id=5]
+radius = 1.61804
+
+[node name="topkek" type="KinematicBody"]
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="chips" type="MeshInstance" parent="."]
+transform = Transform( 0.433013, -0.25, 0, 0.25, 0.433013, 0, 0, 0, 0.5, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin-loop"
+anims/pickedup = SubResource( 3 )
+anims/spin-loop = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000414133, 0, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 5 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="onPickupAnimFinished"]
+[connection signal="body_entered" from="Area" to="." method="onBodyEntered"]

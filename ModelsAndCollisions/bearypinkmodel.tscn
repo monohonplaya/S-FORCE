@@ -1,0 +1,96 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://glb/bearypink.glb" type="PackedScene" id=1]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "walk-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "running-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "shoot"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "jump-air-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "land"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeTimeScale" id=8]
+
+[sub_resource type="AnimationNodeTimeScale" id=9]
+
+[sub_resource type="AnimationNodeTimeScale" id=10]
+
+[sub_resource type="AnimationNodeBlend2" id=11]
+
+[sub_resource type="AnimationNodeOneShot" id=12]
+filter_enabled = true
+filters = [ "Armature/Skeleton:forearml", "Armature/Skeleton:forearmr", "Armature/Skeleton:head", "Armature/Skeleton:neck", "Armature/Skeleton:spine_0", "Armature/Skeleton:spine_1", "Armature/Skeleton:upperarml", "Armature/Skeleton:upperarmr" ]
+
+[sub_resource type="AnimationNodeBlend3" id=13]
+
+[sub_resource type="AnimationNodeOneShot" id=14]
+
+[sub_resource type="AnimationNodeOneShot" id=15]
+fadeout_time = 0.4
+
+[sub_resource type="AnimationNodeBlendTree" id=16]
+graph_offset = Vector2( 542, -138.2 )
+nodes/Animation/node = SubResource( 7 )
+nodes/Animation/position = Vector2( 288, 96 )
+"nodes/Animation 2/node" = SubResource( 1 )
+"nodes/Animation 2/position" = Vector2( 112, 256 )
+"nodes/Animation 3/node" = SubResource( 2 )
+"nodes/Animation 3/position" = Vector2( 176, 416 )
+"nodes/Animation 4/node" = SubResource( 3 )
+"nodes/Animation 4/position" = Vector2( 1568, 528 )
+"nodes/Animation 5/node" = SubResource( 4 )
+"nodes/Animation 5/position" = Vector2( 640, 592 )
+"nodes/Animation 6/node" = SubResource( 5 )
+"nodes/Animation 6/position" = Vector2( 1296, 528 )
+"nodes/Animation 7/node" = SubResource( 6 )
+"nodes/Animation 7/position" = Vector2( 1079.4, 537.6 )
+nodes/TimeScale/node = SubResource( 10 )
+nodes/TimeScale/position = Vector2( 352, 240 )
+"nodes/TimeScale 2/node" = SubResource( 8 )
+"nodes/TimeScale 2/position" = Vector2( 400, 384 )
+"nodes/TimeScale 3/node" = SubResource( 9 )
+"nodes/TimeScale 3/position" = Vector2( 880, 496 )
+nodes/air/node = SubResource( 11 )
+nodes/air/position = Vector2( 1536, 320 )
+nodes/attack/node = SubResource( 12 )
+nodes/attack/position = Vector2( 1760, 320 )
+nodes/iwr_blend/node = SubResource( 13 )
+nodes/iwr_blend/position = Vector2( 656, 192 )
+nodes/jump/node = SubResource( 14 )
+nodes/jump/position = Vector2( 1104, 256 )
+nodes/land/node = SubResource( 15 )
+nodes/land/position = Vector2( 1328, 240 )
+nodes/output/position = Vector2( 1984, 320 )
+node_connections = [ "output", 0, "attack", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "land", 0, "jump", "land", 1, "Animation 7", "attack", 0, "air", "attack", 1, "Animation 4", "air", 0, "land", "air", 1, "Animation 6", "TimeScale 3", 0, "Animation 5", "TimeScale", 0, "Animation 2", "TimeScale 2", 0, "Animation 3", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "TimeScale 2" ]
+
+[node name="bearypink" instance=ExtResource( 1 )]
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "running-loop"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 16 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.0
+"parameters/TimeScale 3/scale" = 1.5
+parameters/air/blend_amount = 0.0
+parameters/attack/active = false
+parameters/iwr_blend/blend_amount = -1.0
+parameters/jump/active = false
+parameters/land/active = false

@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://glb/smokeparticle.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://glb/fireparticle.tres" type="ArrayMesh" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.985303, 1, 0.796624, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.00156904, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.307008, 0.965517 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.1341 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 30.0
+angular_velocity_random = 1.0
+linear_accel = 8.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 1.5
+scale_random = 0.99
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.203947, 1 )
+colors = PoolColorArray( 0.332031, 0.0755344, 0.0755344, 1, 0.596322, 0.642198, 0.901367, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.39069, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3( 0, 0, 0 )
+linear_accel = 5.0
+linear_accel_random = 0.44
+angle = 63.1
+angle_random = 1.0
+scale = 0.7
+scale_random = 1.0
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
+[node name="Fire" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.44983, 0 )
+
+[node name="Flames" type="Particles" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+amount = 64
+process_material = SubResource( 5 )
+draw_pass_1 = ExtResource( 2 )
+
+[node name="Smoke" type="Particles" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+amount = 64
+lifetime = 2.0
+visibility_aabb = AABB( -6.0637, -4.54035, -3.4573, 12.1274, 9.0807, 6.91459 )
+process_material = SubResource( 10 )
+draw_pass_1 = ExtResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 0.960784, 0.92549, 0.862745, 1 )
+light_indirect_energy = 2.0
+shadow_contact = 0.2
+omni_range = 20.0
+omni_shadow_mode = 0
