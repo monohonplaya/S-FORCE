@@ -58,8 +58,11 @@ public class PlayerController : Spatial
     private ClippedCamera _mainCam;
     private ClippedCamera _fallCam;
     private bool _fallDying = false;
+    private bool _dying = false;
+    private bool _damagedInvincibility = false;
     public override void _Ready()
     {
+        GameData.RespawnPoint = GlobalTransform.origin;
         _player = (KinematicBody)GetNode("bearypink");
         _hitbox = (Area)_player.GetNode("Hitbox");
         _hitbox.Monitoring = false;
@@ -139,15 +142,42 @@ public class PlayerController : Spatial
            //_fallCam.GlobalTransform = new Transform(new Basis(new Quat(_player.GlobalTransform.basis)), _fallCam.GlobalTransform.origin);
             _fallCam.GlobalTransform = _fallCam.GlobalTransform.LookingAt(_player.GlobalTransform.origin, Vector3.Up);
         }
-        HandleMovement(delta);
+        if (_damagedInvincibility)
+        {
+            _player.Visible = !_player.Visible;
+        }
+        if (!_dying)
+            HandleMovement(delta);
     }
     public String GetState()
     {
         return _moveFSM._state;
     }
-    public void BeDamaged(float damage)
+    public async void BeDamaged(float damage)
     {
-        _hitpoints -= damage;
+        if (!_damagedInvincibility)
+        {
+            _hitpoints -= damage;
+            if (_hitpoints <= 0)
+            {
+                _dying = true;
+                 _damagedInvincibility = true;
+                _player.SetCollisionLayerBit(1, false);
+                await ToSignal(GetTree().CreateTimer(1F), "timeout");
+                _dying = false;
+                _damagedInvincibility = false;
+                _player.SetCollisionLayerBit(1, true);
+                _player.Visible = true;
+                _die();
+                return;
+            }
+            _damagedInvincibility = true;
+            _player.SetCollisionLayerBit(1, false);
+            await ToSignal(GetTree().CreateTimer(2F), "timeout");
+            _damagedInvincibility = false;
+            _player.SetCollisionLayerBit(1, true);
+            _player.Visible = true;
+        }
     }
     public void KnockBack(Vector3 dir, float speed)
     {
@@ -164,13 +194,17 @@ public class PlayerController : Spatial
         _fallDying = true;
         _fallTimer.Start();
     }
+    public void PlaySquishedAnim()
+    {
+        _animTree.Set("parameters/squished/active", true);
+    }
     public void _onHitboxBodyEntered(Node body)
     {
-        GD.Print("_onHitboxBodyEntered");
         spikeman kb = (spikeman)body;
         Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
         //knock.y += .2F;
         kb.KnockBack(knock.Normalized(), 100F);
+        kb.BeDamaged(20);
     }
     public void _onKnockBackTimeout()
     {
@@ -191,8 +225,13 @@ public class PlayerController : Spatial
     {
         _fallCam.Current = false;
         _mainCam.Current = true;
-        _player.Translation = Vector3.Zero;
+        _die();
         _fallDying = false;
+    }
+    private void _die()
+    {
+        _player.Translation = ToLocal(GameData.RespawnPoint);
+        _hitpoints = _maxHP;
     }
     private void HandleMovement(float delta) 
     {

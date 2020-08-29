@@ -3,10 +3,6 @@
 [ext_resource path="res://glb/texat.material" type="Material" id=1]
 [ext_resource path="res://Decoration/Fire.tscn" type="PackedScene" id=2]
 
-
-
-
-
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "standingtorch"
 surfaces/0 = {

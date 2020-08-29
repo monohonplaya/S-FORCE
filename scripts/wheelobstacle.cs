@@ -27,7 +27,14 @@ public class wheelobstacle : Spatial
         if (_path.UnitOffset == 1 || _path.UnitOffset == 0)
             _direction *= -1;
     }
-
+    public void _onHitboxBodyEntered(Node body)
+    {
+        KinematicBody kb = (KinematicBody)body;
+        PlayerController player = (PlayerController)kb.GetParent();
+        player.BeDamaged(50);
+        player.PlaySquishedAnim();
+        //player.KnockBack((kb.GlobalTransform.origin - GlobalTransform.origin), 3F);
+    }
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)
 //  {

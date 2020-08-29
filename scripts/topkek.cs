@@ -3,15 +3,18 @@ using System;
 
 public class topkek : KinematicBody
 {
+    [Export]
+    private bool _physicsActive = true;
     private AnimationPlayer _animPlayer;
+    
     public override void _Ready()
     {
       _animPlayer = (AnimationPlayer)GetNode("AnimationPlayer");
     }
     public override void _PhysicsProcess(float delta)
     {
-        
-        MoveAndSlideWithSnap(new Vector3(0, -1F, 0) + GetFloorVelocity() * delta, Vector3.Down, Vector3.Up, true);
+        if (_physicsActive)
+            MoveAndSlideWithSnap(new Vector3(0, -1F, 0) + GetFloorVelocity() * delta, Vector3.Down, Vector3.Up, true);
 
     }
     private void onBodyEntered(Node body)

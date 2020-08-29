@@ -1,47 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/PlayerController.cs" type="Script" id=1]
 [ext_resource path="res://ModelsAndCollisions/bearypink.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ModelsAndCollisions/heart_particle.tres" type="ArrayMesh" id=3]
-
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.190789, 0.532895, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 0.939453, 0, 1, 1, 0.0381892, 0, 0.0406504, 1, 0, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0.323755 ), 0.0, 0.0, 0, 0, Vector2( 0.0475941, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.694038, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="ParticlesMaterial" id=5]
-direction = Vector3( -1, 0, 0 )
-spread = 0.0
-gravity = Vector3( 0, -1, 0 )
-initial_velocity = 1.0
-scale = 0.6
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
-
-[sub_resource type="ParticlesMaterial" id=6]
-direction = Vector3( -1, 0, 0 )
-spread = 180.0
-flatness = 0.38
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.1
-angular_velocity = 3.0
-radial_accel = 39.68
-tangential_accel = 11.11
-scale = 0.05
-color_ramp = SubResource( 2 )
-hue_variation = 0.1
-hue_variation_random = 0.99
-
-[sub_resource type="SphereShape" id=7]
-radius = 1.18864
 
 [node name="PlayerController" type="Spatial"]
 script = ExtResource( 1 )
@@ -49,38 +9,6 @@ _minPitch = -60.0
 _maxPitch = 30.0
 
 [node name="bearypink" parent="." instance=ExtResource( 2 )]
-collision_layer = 2
-
-[node name="AnimationTree" parent="bearypink/bearypink" index="2"]
-"parameters/TimeScale 3/scale" = 2.0
-
-[node name="Particles" type="Particles" parent="bearypink"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.79716, 1.21893 )
-emitting = false
-amount = 1
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource( 5 )
-draw_pass_1 = ExtResource( 3 )
-
-[node name="Particles2" type="Particles" parent="bearypink"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.79716, 1.21893 )
-emitting = false
-amount = 16
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.85
-process_material = SubResource( 6 )
-draw_pass_1 = ExtResource( 3 )
-
-[node name="Hitbox" type="Area" parent="bearypink"]
-collision_layer = 0
-collision_mask = 2147483656
-
-[node name="CollisionShape" type="CollisionShape" parent="bearypink/Hitbox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23417, 1.11316 )
-shape = SubResource( 7 )
 
 [node name="Camroot" type="Spatial" parent="."]
 
@@ -125,5 +53,3 @@ one_shot = true
 [connection signal="timeout" from="FallTimer" to="." method="_onFallTimerTimeout"]
 
 [editable path="bearypink"]
-
-[editable path="bearypink/bearypink"]

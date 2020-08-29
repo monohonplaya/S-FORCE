@@ -30,7 +30,8 @@ public class spikeman : KinematicBody
     private Vector3 _direction = Vector3.Zero;
     private float _yVel = 0F;
     private Vector3 _knockBack = Vector3.Zero;
-
+    private Area _hitbox;
+    private int health = 60;
     public override void _Ready()
     {
         _nav = (Navigation)GetNode(_navPath);
@@ -46,16 +47,32 @@ public class spikeman : KinematicBody
         spikeSM.AddState("KnockedBack");
         spikeSM.SetState("HopAround");
         timer = (Timer)GetNode("Timer");
+        _hitbox = (Area)GetNode("Hitbox");
         _knockBackTimer = (Timer)GetNode("Knockback");
         _animTree = (AnimationTree)GetNode("AnimationTree");
     }
     public void KnockBack(Vector3 dir, float speed)
     {
+        _hitbox.Monitoring = false;
         _knockBack = dir * speed;
         _velVec = dir * speed;
         _yVel = _knockBack.y;
         spikeSM.SetState("KnockedBack");
         _knockBackTimer.Start();
+    }
+    public void BeDamaged(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+    private async void Die()
+    {
+        _animTree.Set("parameters/Die/active", true);
+        await ToSignal(GetTree().CreateTimer(1F), "timeout");
+        QueueFree();
     }
     public void PlayerHasMoved() 
     {
@@ -176,6 +193,7 @@ public class spikeman : KinematicBody
     {
         spikeSM.SetState("HopAround");
         _knockBack = Vector3.Zero;
+        _hitbox.Monitoring = true;
     }
     public void _onHitboxEntered(Node body)
     {
@@ -184,7 +202,7 @@ public class spikeman : KinematicBody
         if (kb.GetParent() is PlayerController)
         {
             pc = (PlayerController)kb.GetParent();
-            pc.BeDamaged(5F);
+            pc.BeDamaged(20F);
             pc.KnockBack((kb.GlobalTransform.origin - GlobalTransform.origin).Normalized(), 6F);
         }
     }

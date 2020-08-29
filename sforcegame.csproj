@@ -57,7 +57,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="scripts\GameData.cs" />
     <Compile Include="Levels\FallDeathBox.cs" />
+    <Compile Include="Props\Savepoint.cs" />
     <Compile Include="scripts\TitleScreen.cs" />
     <Compile Include="scripts\spikeman.cs" />
     <Compile Include="scripts\topkek.cs" />

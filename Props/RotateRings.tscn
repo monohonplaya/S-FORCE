@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Props/ringinner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Props/ringmiddle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Props/ringouter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/rotateplatform.cs" type="Script" id=4]
+[ext_resource path="res://Props/walltorch.tscn" type="PackedScene" id=5]
+
+[node name="RotateRings" type="Spatial"]
+
+[node name="ringinner" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+_rotateSpeed = 0.4
+
+[node name="ringmiddle" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+_rotateSpeed = -0.3
+
+[node name="walltorch" parent="ringmiddle" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 14.7912 )
+
+[node name="walltorch2" parent="ringmiddle" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10, -14.6057 )
+
+[node name="ringouter" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+_rotateSpeed = 0.2
+
+[node name="walltorch" parent="ringouter" instance=ExtResource( 5 )]
+transform = Transform( 0.989962, 0, 0.141333, 0, 1, 0, -0.141333, 0, 0.989962, 2.94391, 14, 25.7474 )
+
+[node name="walltorch2" parent="ringouter" instance=ExtResource( 5 )]
+transform = Transform( -0.989962, 0, -0.141333, 0, 1, 0, 0.141333, 0, -0.989962, -3.53135, 14, -25.9634 )
+
+[node name="walltorch3" parent="ringouter" instance=ExtResource( 5 )]
+transform = Transform( -0.154952, 0, 0.987922, 0, 1, 0, -0.987922, 0, -0.154952, 25.311, 14, -3.66941 )
+
+[node name="walltorch4" parent="ringouter" instance=ExtResource( 5 )]
+transform = Transform( 0.154952, 0, -0.987922, 0, 1, 0, 0.987922, 0, 0.154952, -25.3515, 14, 3.36764 )

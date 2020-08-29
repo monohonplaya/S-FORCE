@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://glb/texat.material" type="Material" id=1]
 [ext_resource path="res://scripts/spikeman.cs" type="Script" id=2]
@@ -41,7 +41,34 @@ bind/5/bone = -1
 bind/5/pose = Transform( -1, -1.50996e-07, -3.7123e-16, 9.00013e-14, -5.96052e-07, 1, -1.50997e-07, 1.00001, -5.60547e-23, -0.152762, -0.937337, -0.0613419 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "slither-loop"
+resource_name = "die"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.2, 3, 0.2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.466667
 loop = true
 tracks/0/type = "transform"
@@ -87,8 +114,7 @@ tracks/5/imported = true
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0, 1, 2.7315e-16, 0.448476, -1.15793, 0.221882, -1.22943e-16, 9.00614e-19, 0.975073, 1, 1, 1, 0.133333, 1, 2.7315e-16, 0.448476, -1.15793, 0.221205, -0.0122003, 0.0771018, 0.972098, 1, 1, 1, 0.2, 1, 2.7315e-16, 0.448476, -1.15793, 0.221758, -0.00523955, 0.0331122, 0.974525, 1, 1, 1, 0.266667, 1, 2.7315e-16, 0.448476, -1.15793, 0.221758, 0.00523955, -0.0331122, 0.974525, 1, 1, 1, 0.333333, 1, 2.7315e-16, 0.448476, -1.15793, 0.221205, 0.0122003, -0.0771018, 0.972098, 1, 1, 1, 0.4, 1, 2.7315e-16, 0.448476, -1.15793, 0.221618, 0.00762645, -0.0481966, 0.973912, 1, 1, 1, 0.466667, 1, 2.7315e-16, 0.448476, -1.15793, 0.221882, -1.22943e-16, 9.00614e-19, 0.975073, 1, 1, 1 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "spikeman_airidle-loop"
+[sub_resource type="Animation" id=5]
 length = 1.33333
 loop = true
 tracks/0/type = "transform"
@@ -134,8 +160,7 @@ tracks/5/imported = true
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0, 1, 8.72073e-19, 0.297713, -0.753917, 0.235405, -7.53708e-17, 2.69646e-17, 0.971897, 1, 1, 1, 0.0666667, 1, 1.24429e-18, 0.298283, -0.755341, 0.235709, -7.53697e-17, 2.70033e-17, 0.971824, 1, 1, 1, 0.133333, 1, 2.7699e-18, 0.30062, -0.76118, 0.236957, -7.53656e-17, 2.71615e-17, 0.97152, 1, 1, 1, 0.2, 1, 5.24091e-18, 0.304405, -0.770637, 0.238978, -7.53586e-17, 2.74177e-17, 0.971025, 1, 1, 1, 0.6, 1, 2.58019e-17, 0.335897, -0.849328, 0.255751, -7.52876e-17, 2.95446e-17, 0.966743, 1, 1, 1, 0.666667, 1, 2.78317e-17, 0.339006, -0.857097, 0.257403, -7.52795e-17, 2.97541e-17, 0.966304, 1, 1, 1, 0.733333, 1, 2.87902e-17, 0.340474, -0.860765, 0.258183, -7.52755e-17, 2.98529e-17, 0.966096, 1, 1, 1, 0.8, 1, 2.62607e-17, 0.339649, -0.858705, 0.257745, -8.26772e-17, 2.95178e-17, 0.966213, 1, 1, 1, 0.866667, 1, 2.39338e-17, 0.336085, -0.849799, 0.255852, -8.26868e-17, 2.92777e-17, 0.966716, 1, 1, 1, 0.933333, 1, 2.02922e-17, 0.330508, -0.835862, 0.252886, -8.27013e-17, 2.89016e-17, 0.967496, 1, 1, 1, 1.2, 1, 2.59552e-18, 0.303403, -0.768133, 0.238443, -8.27601e-17, 2.70701e-17, 0.971156, 1, 1, 1, 1.26667, 1, -1.07044e-19, 0.299263, -0.75779, 0.236233, -8.27676e-17, 2.67901e-17, 0.971697, 1, 1, 1, 1.33333, 1, 8.72073e-19, 0.297713, -0.753917, 0.235405, -7.53708e-17, 2.69646e-17, 0.971897, 1, 1, 1 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "spikeman_jump_start"
+[sub_resource type="Animation" id=6]
 length = 0.183333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature003/Skeleton:tail")
@@ -180,43 +205,52 @@ tracks/5/imported = true
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0, 1, 2.7315e-16, 0.448476, -1.15793, 0.221882, -1.22943e-16, 9.00614e-19, 0.975073, 1, 1, 1, 0.0666667, 1, 1.50159e-16, 0.268199, -0.68544, 0.136844, -1.22561e-16, -9.72034e-18, 0.990593, 1, 1, 1, 0.133333, 1, 5.81091e-17, 0.0983031, -0.244706, 0.00541829, -1.53338e-17, 3.2473e-19, 0.999985, 1, 1, 1, 0.183333, 1, 1.05879e-22, 0, -1.19209e-07, 1.4013e-45, -2.64698e-23, -2.64698e-23, 1, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeBlend2" id=6]
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "spikeman_airidle-loop"
+[sub_resource type="AnimationNodeBlend2" id=7]
 
 [sub_resource type="AnimationNodeAnimation" id=8]
-animation = "spikeman_jump_start"
+animation = "spikeman_airidle-loop"
 
 [sub_resource type="AnimationNodeAnimation" id=9]
+animation = "spikeman_jump_start"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "slither-loop"
 
-[sub_resource type="AnimationNodeOneShot" id=10]
+[sub_resource type="AnimationNodeOneShot" id=12]
 
-[sub_resource type="AnimationNodeTimeScale" id=11]
+[sub_resource type="AnimationNodeOneShot" id=13]
 
-[sub_resource type="AnimationNodeBlendTree" id=12]
-graph_offset = Vector2( -750.4, -176.8 )
-nodes/AirSlither/node = SubResource( 6 )
+[sub_resource type="AnimationNodeTimeScale" id=14]
+
+[sub_resource type="AnimationNodeBlendTree" id=15]
+graph_offset = Vector2( -835.2, -232 )
+nodes/AirSlither/node = SubResource( 7 )
 nodes/AirSlither/position = Vector2( -64, 48 )
-nodes/Animation/node = SubResource( 9 )
+nodes/Animation/node = SubResource( 11 )
 nodes/Animation/position = Vector2( -544, -16 )
-"nodes/Animation 2/node" = SubResource( 7 )
+"nodes/Animation 2/node" = SubResource( 8 )
 "nodes/Animation 2/position" = Vector2( -560, 256 )
-"nodes/Animation 3/node" = SubResource( 8 )
+"nodes/Animation 3/node" = SubResource( 9 )
 "nodes/Animation 3/position" = Vector2( -176, 352 )
-nodes/Jump/node = SubResource( 10 )
+"nodes/Animation 4/node" = SubResource( 10 )
+"nodes/Animation 4/position" = Vector2( 192, 336 )
+nodes/Die/node = SubResource( 12 )
+nodes/Die/position = Vector2( 512, 96 )
+nodes/Jump/node = SubResource( 13 )
 nodes/Jump/position = Vector2( 192, 80 )
-nodes/SlitherSpeed/node = SubResource( 11 )
+nodes/SlitherSpeed/node = SubResource( 14 )
 nodes/SlitherSpeed/position = Vector2( -288, 0 )
-nodes/output/position = Vector2( 528, 128 )
-node_connections = [ "output", 0, "Jump", "AirSlither", 0, "SlitherSpeed", "AirSlither", 1, "Animation 2", "Jump", 0, "AirSlither", "Jump", 1, "Animation 3", "SlitherSpeed", 0, "Animation" ]
+nodes/output/position = Vector2( 720, 128 )
+node_connections = [ "output", 0, "Die", "Die", 0, "Jump", "Die", 1, "Animation 4", "SlitherSpeed", 0, "Animation", "AirSlither", 0, "SlitherSpeed", "AirSlither", 1, "Animation 2", "Jump", 0, "AirSlither", "Jump", 1, "Animation 3" ]
 
-[sub_resource type="CapsuleShape" id=13]
+[sub_resource type="CapsuleShape" id=16]
 radius = 0.604591
 height = 0.680769
 
-[sub_resource type="CapsuleShape" id=14]
+[sub_resource type="CapsuleShape" id=17]
 radius = 0.830859
 height = 0.741645
 
@@ -266,37 +300,39 @@ material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "slither-loop"
-anims/slither-loop = SubResource( 3 )
-anims/spikeman_airidle-loop = SubResource( 4 )
-anims/spikeman_jump_start = SubResource( 5 )
+anims/die = SubResource( 3 )
+anims/slither-loop = SubResource( 4 )
+anims/spikeman_airidle-loop = SubResource( 5 )
+anims/spikeman_jump_start = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 12 )
+tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/AirSlither/blend_amount = 0.0
+parameters/Die/active = false
 parameters/Jump/active = false
 parameters/SlitherSpeed/scale = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( -4.37114e-08, -1, 0, 0.863719, -3.77544e-08, 0, 0, 0, 0.895013, 0, 0.519735, -0.0608712 )
-shape = SubResource( 13 )
+shape = SubResource( 16 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
 autostart = true
 
-[node name="Area" type="Area" parent="."]
+[node name="Hitbox" type="Area" parent="."]
 collision_layer = 8
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="Hitbox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.639179, -0.225001 )
-shape = SubResource( 14 )
+shape = SubResource( 17 )
 
 [node name="Knockback" type="Timer" parent="."]
 wait_time = 0.6
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="body_entered" from="Area" to="." method="_onHitboxEntered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_onHitboxEntered"]
 [connection signal="timeout" from="Knockback" to="." method="_onKnockbackTimeout"]
