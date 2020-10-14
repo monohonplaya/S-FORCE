@@ -530,17 +530,26 @@ transform = Transform( -0.0784353, 0, 0.183978, 0, 0.2, 0, -0.183978, 0, -0.0784
 [node name="bearymesh001" parent="Models/bearyebil/Armature001/Skeleton" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331269, 0 )
 
+[node name="AnimationTree" parent="Models/bearyebil" index="2"]
+active = false
+
 [node name="bearyebil2" parent="Models" instance=ExtResource( 5 )]
 transform = Transform( -0.163906, 0, 0.114607, 0, 0.2, 0, -0.114607, 0, -0.163906, -1.89856, -0.929449, -9.52672 )
 
 [node name="bearymesh001" parent="Models/bearyebil2/Armature001/Skeleton" index="0"]
-transform = Transform( 1, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, 1, 0, -0.0738492, 0 )
+transform = Transform( 1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, 0, -0.0738492, 0 )
+
+[node name="AnimationTree" parent="Models/bearyebil2" index="2"]
+active = false
 
 [node name="bearysmol" parent="Models" instance=ExtResource( 6 )]
 transform = Transform( 0.174238, 0, 0.0981899, 0, 0.2, 0, -0.0981899, 0, 0.174238, -1.33996, -0.99415, -12.875 )
 
 [node name="bearymesh002" parent="Models/bearysmol/Armature002/Skeleton" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0964994, 0 )
+
+[node name="AnimationTree" parent="Models/bearysmol" index="2"]
+active = false
 
 [node name="bearysmol2" parent="Models" instance=ExtResource( 6 )]
 transform = Transform( -0.0318833, 0, -0.197442, 0, 0.2, 0, 0.197442, 0, -0.0318833, 2.03438, -1.05997, -10.9777 )
@@ -551,11 +560,17 @@ transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0 )
 [node name="bearymesh002" parent="Models/bearysmol2/Armature002/Skeleton" index="0"]
 transform = Transform( 0.999338, 0, 0.0363993, 0, 1, 0, -0.0363993, 0, 0.999338, 0.0696716, 0.301068, 0.163742 )
 
+[node name="AnimationTree" parent="Models/bearysmol2" index="2"]
+active = false
+
 [node name="firewood" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.533428, -0.963885, -11.2199 )
 
 [node name="bearypink" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.186187, 0.00768454, 0.0726323, -0.00715907, 0.199852, -0.00279279, -0.072686, 0, 0.186324, -3.46994, 2.4243, -3.80511 )
+transform = Transform( 0.465467, 0.0192113, 0.181581, -0.0178977, 0.499631, -0.00698198, -0.181715, 3.11993e-08, 0.465811, -3.46994, 2.4243, -3.80511 )
+
+[node name="AnimationTree" parent="bearypink" index="2"]
+parameters/iwr_blend/blend_amount = -1.0
 
 [node name="spikeman" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.282941, 0, -0.0997224, 0, 0.3, 0, 0.0997224, 0, -0.282941, -0.0241652, -1.05682, -8.80056 )
@@ -755,6 +770,8 @@ anims/water-loop = SubResource( 43 )
 [editable path="Models/bearysmol"]
 
 [editable path="Models/bearysmol2"]
+
+[editable path="bearypink"]
 
 [editable path="spikeman"]
 

@@ -22,9 +22,10 @@ public class topkek : KinematicBody
         if (body.GetParent().GetType() == typeof(PlayerController))
         {
             PlayerController player = (PlayerController)body.GetParent();
-            player.IncrementPoints();
+            player.IncrementTopKeks();
             SetCollisionLayerBit(4, false);
             _animPlayer.Play("pickedup");
+
         }
     }
     private void onPickupAnimFinished(String name)

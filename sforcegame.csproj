@@ -57,9 +57,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="scripts\CharacterSelect.cs" />
+    <Compile Include="scripts\Goal.cs" />
+    <Compile Include="Props\speedplatform.cs" />
     <Compile Include="scripts\GameData.cs" />
-    <Compile Include="Levels\FallDeathBox.cs" />
-    <Compile Include="Props\Savepoint.cs" />
+    <Compile Include="scripts\FallDeathBox.cs" />
+    <Compile Include="scripts\Savepoint.cs" />
     <Compile Include="scripts\TitleScreen.cs" />
     <Compile Include="scripts\spikeman.cs" />
     <Compile Include="scripts\topkek.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripts\StateMachine.cs" />
     <Compile Include="scripts\wheelobstacle.cs" />
+    <Compile Include="scripts\HUD.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

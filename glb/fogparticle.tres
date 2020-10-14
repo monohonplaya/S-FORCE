@@ -1,0 +1,18 @@
+[gd_resource type="ArrayMesh" load_steps=2 format=2]
+
+[ext_resource path="res://glb/texat.material" type="Material" id=1]
+
+[resource]
+resource_name = "Plane"
+surfaces/0 = {
+"aabb": AABB( -5.21883, -3.41735e-07, -1, 10.4377, 1.06835e-05, 2.00001 ),
+"array_data": PoolByteArray( 169, 0, 167, 64, 168, 119, 183, 52, 255, 255, 127, 63, 0, 127, 0, 0, 127, 0, 0, 127, 37, 59, 150, 52, 169, 0, 167, 64, 93, 136, 168, 52, 0, 0, 128, 191, 0, 127, 0, 0, 127, 0, 0, 127, 37, 59, 88, 52, 169, 0, 167, 192, 168, 119, 183, 180, 255, 255, 127, 191, 0, 127, 0, 0, 127, 0, 0, 127, 71, 57, 88, 52, 169, 0, 167, 192, 93, 136, 168, 180, 0, 0, 128, 63, 0, 127, 0, 0, 127, 0, 0, 127, 71, 57, 150, 52 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}

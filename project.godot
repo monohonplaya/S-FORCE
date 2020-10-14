@@ -77,6 +77,6 @@ attack={
 
 [rendering]
 
-quality/filters/anisotropic_filter_level=1
+quality/filters/anisotropic_filter_level=2
 quality/filters/use_nearest_mipmap_filter=true
 environment/default_environment="res://default_env.tres"

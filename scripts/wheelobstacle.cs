@@ -15,17 +15,23 @@ public class wheelobstacle : Spatial
     private PathFollow _path;
     private MeshInstance _wheel;
     private int _direction = 1;
+    private AudioStreamPlayer3D _audio;
+
     public override void _Ready()
     {
         _path = (PathFollow)GetNode("Path/PathFollow");
         _wheel = (MeshInstance)GetNode("Path/PathFollow/Cylinder");
+        _audio = (AudioStreamPlayer3D)GetNode("Path/PathFollow/Cylinder/AudioStreamPlayer3D");
     }
     public override void _PhysicsProcess(float delta)
     {
         _path.UnitOffset += _direction * delta * _moveSpeed;
         _wheel.Rotate(new Vector3(1F,0F,0F), _direction * delta * _rollSpeed);
         if (_path.UnitOffset == 1 || _path.UnitOffset == 0)
+        {
             _direction *= -1;
+            _audio.Play();
+        }
     }
     public void _onHitboxBodyEntered(Node body)
     {

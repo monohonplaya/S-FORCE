@@ -202,7 +202,7 @@ public class spikeman : KinematicBody
         if (kb.GetParent() is PlayerController)
         {
             pc = (PlayerController)kb.GetParent();
-            pc.BeDamaged(20F);
+            pc.BeDamaged(20);
             pc.KnockBack((kb.GlobalTransform.origin - GlobalTransform.origin).Normalized(), 6F);
         }
     }

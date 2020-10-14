@@ -9,6 +9,6 @@ public class TitleScreen : Spatial
     }
     public void _onCampaignPressed()
     {
-        GetTree().ChangeScene("Levels/FirstLevel.tscn");
+        GetTree().ChangeScene("Levels/CharacterSelect.tscn");
     }
 }

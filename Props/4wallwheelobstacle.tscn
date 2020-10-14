@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Props/wheelobstaclefixed.tscn" type="PackedScene" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="wheelobstacle" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0429816, -2.16953, 45.0533 )
+
+[node name="wheelobstacle2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0429821, -2.16953, -44.9467 )
+
+[node name="wheelobstacle3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -2.8213e-07, 0, 1, 0, 1, 0, -1, 0, -2.8213e-07, -45.043, -2.16953, 0.0532619 )
+
+[node name="wheelobstacle4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, 44.957, -2.16953, 0.0532444 )

@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://glb/speedplatform.glb" type="PackedScene" id=1]
+[ext_resource path="res://Props/speedplatform.cs" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "blip"
+length = 0.4
+loop = true
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Plane001:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.17083, -1.97748 ), Vector3( 0, 0.0535092, -1.97748 ), Vector3( 0, 0.17083, -1.97748 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Plane:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0666667, 0.2, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.17083, 0.463755 ), Vector3( 0, 0.17083, 0.463755 ), Vector3( 0, 0.054, 0.464 ), Vector3( 0, 0.17083, 0.463755 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Plane002:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.266667, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.17083, 2.9242 ), Vector3( 0, 0.17083, 2.9242 ), Vector3( 0, 0.054, 2.924 ), Vector3( 0, 0.17083, 2.9242 ) ]
+}
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 3.03878, 0.490188, 4.0518 )
+
+[node name="speedplatform" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Plane" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141622, 0.463817 )
+
+[node name="Plane001" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0828393, -1.97748 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "blip"
+anims/blip = SubResource( 1 )
+
+[node name="Area" type="Area" parent="." index="5"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426043, 0 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Area" to="." method="_onAreaBodyEntered"]

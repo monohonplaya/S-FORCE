@@ -7,7 +7,11 @@ public class PlayerController : Spatial
     [Export]
     private float _moveSpeed = 30;
     [Export]
+    private float _baseRunSpeed = 30;
+    [Export]
     private float _runSpeed = 30;
+    [Export]
+    private float _baseWalkSpeed = 15;
     [Export]
     private float _walkSpeed = 15;
     [Export]
@@ -17,15 +21,17 @@ public class PlayerController : Spatial
     [Export]
     private float _angularAcceleration = 30;
     [Export]
+    private float _boostSpeed = 2.4F;
+    [Export]
     private float _gravity = 3F;
     [Export]
     private float _maxTerminalVelocity = 54;
     [Export]
     private float _jumpPower = 50;
     [Export]
-    public float _hitpoints {get; private set; } = 100;
+    public int _hitpoints {get; private set; } = 100;
     [Export]
-    public float _maxHP {get; private set; } = 100;
+    public int _maxHP {get; private set; } = 100;
     [Export(PropertyHint.Range, "0.1,1")]
     private float _mouseSensitivity = 0.3F;
     [Export(PropertyHint.Range, "-90,0")]
@@ -34,6 +40,7 @@ public class PlayerController : Spatial
     private float _maxPitch = 90;
     private Vector3 _velocity;
     public KinematicBody _player { get; private set; } = null;
+    private HUD _HUD;
     private Area _hitbox; 
     private Vector3 _playerDirection;
     private AnimationTree _animTree;
@@ -45,44 +52,90 @@ public class PlayerController : Spatial
     private Timer _attackActive;
     private Timer _attackCooldown;
     private Timer _fallTimer;
+    private Timer _stepTimer;
     private StateMachine _moveFSM;
     private Spatial _hor;
     private Spatial _vert;
     private Spatial _camroot;
     private float _camRotH = 0;
     private float _camRotV = 0;
-    private int points = 0;
+    private int topkeks = 0;
     private Vector3 _knockBack = Vector3.Zero;
     private bool _knockBackState = false;
     private StateMachine _actionFSM;
     private ClippedCamera _mainCam;
     private ClippedCamera _fallCam;
+    private AudioStreamPlayer3D _attackSound;
     private bool _fallDying = false;
     private bool _dying = false;
     private bool _damagedInvincibility = false;
+    private bool _speedBoostState = false;
+    private Vector3 _speedBoostVector = Vector3.Zero;
+    private AudioStreamPlayer3D _stepPlayer;
+    private AudioStream[] _steps = new AudioStream[8];
+
+
     public override void _Ready()
     {
+        GD.Randomize();
         GameData.RespawnPoint = GlobalTransform.origin;
-        _player = (KinematicBody)GetNode("bearypink");
+        GameData.PlayerHealth = _hitpoints;
+        PackedScene _playerScene;
+        if (GameData.SelectedCharacter == GameData.CharSelect.Pink)
+        {
+            _playerScene = (PackedScene)ResourceLoader.Load("res://ModelsAndCollisions/bearypink.tscn");
+        } 
+        else if (GameData.SelectedCharacter == GameData.CharSelect.Ebil) {
+            _playerScene = (PackedScene)ResourceLoader.Load("res://ModelsAndCollisions/bearyebil.tscn");
+        }
+        else
+        {
+            _playerScene = (PackedScene)ResourceLoader.Load("res://ModelsAndCollisions/bearysmol.tscn");
+        }
+        _player = (KinematicBody)_playerScene.Instance();
+        AddChild(_player);
+
+        // _player = (KinematicBody)GetNode("bearypink");
         _hitbox = (Area)_player.GetNode("Hitbox");
         _hitbox.Monitoring = false;
         _playerDirection = _player.Rotation;
-        _animTree = (AnimationTree)GetNode("bearypink/bearypink/AnimationTree");
+
+        /* this is needed because moving the animation nodes in ebil and smol causes the animation paths to
+           be wrong and every bone for every animation needs to be manually edited to fix it >_<
+        */
+        if (GameData.SelectedCharacter == GameData.CharSelect.Pink)
+        {
+            _animTree = (AnimationTree)_player.GetNode("mesh/AnimationTree");
+        }
+        else
+        {
+            _animTree = (AnimationTree)_player.GetNode("AnimationTree");
+        }
         _landRecoveryTimer = (Timer)GetNode("LandRecovery");
         _knockBackTimer = (Timer)GetNode("KnockBack");
         _attackActive = (Timer)GetNode("AttackActive");
         _attackCooldown = (Timer)GetNode("AttackCooldown");
         _fallTimer = (Timer)GetNode("FallTimer");
+        _stepTimer = (Timer)GetNode("StepTimer");
         _hor = (Spatial)GetNode("Camroot/H");
         _vert = (Spatial)GetNode("Camroot/H/V");
         _camroot = (Spatial)GetNode("Camroot");
-        _partic1 = (Particles)GetNode("bearypink/Particles");
-        _partic2 =  (Particles)GetNode("bearypink/Particles2");
+        _partic1 = (Particles)_player.GetNode("Particles");
+        _partic2 =  (Particles)_player.GetNode("Particles2");
         _mainCam = (ClippedCamera)_vert.GetNode("ClippedCamera");
         _mainCam.AddException(_player);
         _fallCam = (ClippedCamera)GetNode("FallCamera");
+        _attackSound = (AudioStreamPlayer3D)_player.GetNode("Hitbox/AttackSound");
+        _HUD = (HUD)GetNode("HUD");
+        _HUD.UpdatePlayerHealth();
         Input.SetMouseMode(Input.MouseMode.Captured);
 
+        _stepPlayer = (AudioStreamPlayer3D)_player.GetNode("StepPlayer");
+        for (int i = 0; i < _steps.Length; ++i)
+        {
+            _steps[i] = ResourceLoader.Load("res://SFX/footsteps/step" + (i+1) + ".wav") as AudioStream;
+        }
+        _stepPlayer.Stream =  _steps[GD.Randi() % 8];
         _moveFSM = new StateMachine();
         _moveFSM.AddState("stand_idle");
         _moveFSM.AddState("walkrun");
@@ -96,7 +149,18 @@ public class PlayerController : Spatial
         _actionFSM.AddState("cooldown");
         _actionFSM.AddState("none");
         _actionFSM.SetState("none");
-        
+    }
+    private void _playRandomStepSound()
+    {
+        _stepPlayer.Stream =  _steps[GD.Randi() % 8];
+        _stepPlayer.Play();
+        //GD.Print("PlayStepSound");
+    }
+    public void _onStepTimerTimeout()
+    {
+        //GD.Print("SteptimerTimeout");
+        _playRandomStepSound();
+        _stepTimer.Start();
     }
     public void _on_LandRecovery_timeout()
     {
@@ -107,6 +171,28 @@ public class PlayerController : Spatial
             else
                 _moveFSM.SetState("stand_idle");
         }
+    }
+    public async void SpeedBoost(Vector3 direction) 
+    {
+        _animTree.Set("parameters/runscale/scale", 3F);
+        _runSpeed = Mathf.Clamp(_runSpeed * _boostSpeed, _baseRunSpeed, _baseRunSpeed * Mathf.Pow(_boostSpeed, 3));
+        _walkSpeed = Mathf.Clamp(_walkSpeed * _boostSpeed, _baseWalkSpeed, _baseWalkSpeed * Mathf.Pow(_boostSpeed, 3));
+        _moveSpeed = _runSpeed;
+        _speedBoostState = true;
+        _playerDirection = direction;
+        _speedBoostVector = direction;
+        _player.Rotation = new Vector3(0, Mathf.Atan2(direction.x, direction.z), 0);
+        _camRotH = 180 + _player.RotationDegrees.y;
+        _hor.RotationDegrees = new Vector3(0,_camRotH,0);
+        _stepTimer.WaitTime = .1F;
+        await ToSignal(GetTree().CreateTimer(1.45F), "timeout");
+        _runSpeed = Mathf.Clamp(_runSpeed / _boostSpeed, _baseRunSpeed, _baseRunSpeed * Mathf.Pow(_boostSpeed, 3));
+        _walkSpeed = Mathf.Clamp(_walkSpeed / _boostSpeed, _baseWalkSpeed, _baseWalkSpeed * Mathf.Pow(_boostSpeed, 3));
+        _moveSpeed = _runSpeed;
+        _speedBoostState = false;
+        _speedBoostVector = Vector3.Zero;
+        _stepTimer.WaitTime = .4F;
+        _animTree.Set("parameters/runscale/scale", 1.35F);
     }
     public override void _Process(float delta) 
     {
@@ -121,9 +207,10 @@ public class PlayerController : Spatial
             }
         }
     }
-    public void IncrementPoints()
+    public void IncrementTopKeks()
     {
-        points += 1;
+        GameData.CollectedTopKek += 1;
+        _HUD.UpdateTopKekCounter();
     }
     public override void _Input(InputEvent @event) 
     {
@@ -153,11 +240,13 @@ public class PlayerController : Spatial
     {
         return _moveFSM._state;
     }
-    public async void BeDamaged(float damage)
+    public async void BeDamaged(int damage)
     {
         if (!_damagedInvincibility)
         {
             _hitpoints -= damage;
+            GameData.PlayerHealth = _hitpoints;
+            _HUD.UpdatePlayerHealth();
             if (_hitpoints <= 0)
             {
                 _dying = true;
@@ -232,12 +321,18 @@ public class PlayerController : Spatial
     {
         _player.Translation = ToLocal(GameData.RespawnPoint);
         _hitpoints = _maxHP;
+        GameData.PlayerHealth = _hitpoints;
+        _HUD.UpdatePlayerHealth();
     }
     private void HandleMovement(float delta) 
     {
         Vector3 direction = new Vector3();
         float accel = _player.IsOnFloor() ? _acceleration : _airAcceleration;
         // change movement direction and save the most recent player orientation
+        if (_speedBoostState)
+        {
+            direction = _speedBoostVector * 7;
+        }
         if (Input.IsActionPressed("up")) {
             direction -= _hor.Transform.basis.z;
             _playerDirection = direction;
@@ -257,23 +352,33 @@ public class PlayerController : Spatial
         switch (_moveFSM._state) 
         {
             case "stand_idle":
+                _stepTimer.Paused = true;
                 if (direction != Vector3.Zero)
+                {
                     _moveFSM.SetState("walkrun");
+                    _stepTimer.Paused = false;
+                    _stepTimer.Start();
+                    _playRandomStepSound();
+                }
                 _animTree.Set("parameters/iwr_blend/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/iwr_blend/blend_amount"), -1, delta * accel));
                 break;
             case "walkrun":
+                _stepTimer.Paused = false;
                 if (direction == Vector3.Zero)
                 {
                     _moveFSM.SetState("stand_idle");
+                    _stepTimer.Paused = true;
                     break;
                 }
                 if (Input.IsActionPressed("movementmod"))
                 {
+                    _stepTimer.WaitTime = .6F;
                     _moveSpeed = _walkSpeed;
                     _animTree.Set("parameters/iwr_blend/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/iwr_blend/blend_amount"), 0, delta * accel));
                 }
                 else
                 {
+                    _stepTimer.WaitTime = .3F;
                     _moveSpeed = _runSpeed;
                     _animTree.Set("parameters/iwr_blend/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/iwr_blend/blend_amount"), 1, delta * accel));     
                 }
@@ -285,6 +390,7 @@ public class PlayerController : Spatial
                     _animTree.Set("parameters/air/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/air/blend_amount"), 1, .01F));
                 break;
             case "air_idle":
+                _stepTimer.Paused = true;
                 _animTree.Set("parameters/air/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/air/blend_amount"), 1, .07F));
                 if (_player.IsOnFloor() && _velocity.y < _jumpPower)
                 {
@@ -296,15 +402,22 @@ public class PlayerController : Spatial
                     
                 break;
             case "land":
+                _playRandomStepSound();
                 _animTree.Set("parameters/air/blend_amount", 0F);
                 break;
         }
+        if (_speedBoostState)
+        {
+            _stepTimer.WaitTime = .1F;
+            _moveSpeed = _runSpeed;
+        }
+            
         direction = direction.Normalized();
         _player.Rotation = new Vector3(0, Mathf.LerpAngle(_player.Rotation.y, Mathf.Atan2(_playerDirection.x, _playerDirection.z), delta * _angularAcceleration), 0);
        
         var vely = _velocity.y;
         if (direction != Vector3.Zero)
-            _velocity = _velocity.LinearInterpolate(_player.Transform.basis.z * _moveSpeed, accel * delta);
+            _velocity = _velocity.LinearInterpolate(_player.Transform.Rotated(Vector3.Up, Rotation.y).basis.z * _moveSpeed, accel * delta);
         else
         {
             _velocity = _velocity.LinearInterpolate(direction * _moveSpeed, accel * delta);
@@ -327,12 +440,14 @@ public class PlayerController : Spatial
         if (Input.IsActionJustPressed("jump") && (_moveFSM._state == "stand_idle" || _moveFSM._state == "walkrun" || _moveFSM._state == "land")) {
             _animTree.Set("parameters/jump/active", true);
             _moveFSM.SetState("jump");
+            _stepTimer.Paused = true;
         }   
         if (_actionFSM._state == "none" && Input.IsActionJustPressed("attack")) {
             _actionFSM.SetState("attack");
             _attackActive.Start();
             _hitbox.Monitoring = true;
             _animTree.Set("parameters/attack/active", true);
+            _attackSound.Play();
             _partic1.Restart();
             _partic2.Restart();
         }
