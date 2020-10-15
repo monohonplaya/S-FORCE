@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/PlayerController.cs" type="Script" id=1]
+[ext_resource path="res://scripts/PauseMenu.cs" type="Script" id=2]
 [ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/NanumPenScript-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 69
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="PlayerController" type="Spatial"]
 script = ExtResource( 1 )
@@ -48,6 +56,94 @@ one_shot = true
 
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.4
+
+[node name="PauseMenu" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+modulate = Color( 0, 0, 0, 0.741176 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="PauseMenu"]
+anchor_left = 0.4
+anchor_top = 0.3
+anchor_right = 0.6
+anchor_bottom = 0.7
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="PauseMenu/Menu"]
+margin_right = 424.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Unpause"
+flat = true
+
+[node name="Button4" type="Button" parent="PauseMenu/Menu"]
+margin_top = 90.0
+margin_right = 424.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "YS Files"
+flat = true
+
+[node name="Button2" type="Button" parent="PauseMenu/Menu"]
+margin_top = 180.0
+margin_right = 424.0
+margin_bottom = 266.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Main Menu"
+flat = true
+
+[node name="Button3" type="Button" parent="PauseMenu/Menu"]
+margin_top = 270.0
+margin_right = 424.0
+margin_bottom = 356.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Quit"
+flat = true
+
+[node name="YSFileList" type="VBoxContainer" parent="PauseMenu"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="PauseMenu/YSFileList"]
+margin_right = 1192.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Back"
+flat = true
 [connection signal="timeout" from="KnockBack" to="." method="_onKnockBackTimeout"]
 [connection signal="timeout" from="LandRecovery" to="." method="_on_LandRecovery_timeout"]
 [connection signal="timeout" from="AttackActive" to="." method="_onAttackActiveTimeout"]

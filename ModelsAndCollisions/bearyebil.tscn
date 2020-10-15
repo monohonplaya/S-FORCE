@@ -83,35 +83,35 @@ bind/19/name = "elbowikl"
 bind/19/bone = -1
 bind/19/pose = Transform( -0.159395, -0.987215, 0, 0, 0, -1, 0.987215, -0.159395, 0, 3.62722, -1.15198, -0.737443 )
 
-[sub_resource type="BoxShape" id=34]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.25765, 3.02656, 0.812546 )
 
-[sub_resource type="Gradient" id=35]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.190789, 0.532895, 1 )
 colors = PoolColorArray( 1, 0, 0, 1, 0.939453, 0, 1, 1, 0.0381892, 0, 0.0406504, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=36]
-gradient = SubResource( 35 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=37]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 0.323755 ), 0.0, 0.0, 0, 0, Vector2( 0.0475941, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.694038, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=38]
-curve = SubResource( 37 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=39]
+[sub_resource type="ParticlesMaterial" id=8]
 direction = Vector3( -1, 0, 0 )
 spread = 0.0
 gravity = Vector3( 0, -1, 0 )
 initial_velocity = 1.0
 scale = 0.6
-scale_curve = SubResource( 38 )
-color_ramp = SubResource( 36 )
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
 
-[sub_resource type="SphereShape" id=40]
+[sub_resource type="SphereShape" id=9]
 radius = 1.26598
 
-[sub_resource type="ParticlesMaterial" id=41]
+[sub_resource type="ParticlesMaterial" id=10]
 direction = Vector3( -1, 0, 0 )
 spread = 180.0
 flatness = 0.38
@@ -121,12 +121,11 @@ angular_velocity = 3.0
 radial_accel = 39.68
 tangential_accel = 11.11
 scale = 0.05
-color_ramp = SubResource( 36 )
+color_ramp = SubResource( 5 )
 hue_variation = 0.1
 hue_variation_random = 0.99
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle-loop"
+[sub_resource type="Animation" id=11]
 length = 5.35
 loop = true
 tracks/0/type = "transform"
@@ -270,8 +269,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 5.35, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "jump"
+[sub_resource type="Animation" id=12]
 length = 0.383333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("mesh/Skeleton:head")
@@ -414,8 +412,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.383333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "jump-air-loop"
+[sub_resource type="Animation" id=13]
 length = 1.68333
 loop = true
 tracks/0/type = "transform"
@@ -559,8 +556,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.68333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "land"
+[sub_resource type="Animation" id=14]
 length = 0.516667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("mesh/Skeleton:head")
@@ -703,8 +699,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.516667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "pick-up"
+[sub_resource type="Animation" id=15]
 length = 0.516667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("mesh/Skeleton:head")
@@ -847,8 +842,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.516667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=8]
-resource_name = "pick-up-idle-loop"
+[sub_resource type="Animation" id=16]
 length = 2.01667
 loop = true
 tracks/0/type = "transform"
@@ -992,8 +986,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2.01667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "running-loop"
+[sub_resource type="Animation" id=17]
 length = 0.55
 loop = true
 tracks/0/type = "transform"
@@ -1137,8 +1130,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0.370611, 0, 0.0598387, 0, 0, 0, 1, 0.994176, 1, 0.744645, 0.55, 1, 0.370611, 0, 0.0598387, 0, 0, 0, 1, 0.994176, 1, 0.744645 )
 
-[sub_resource type="Animation" id=10]
-resource_name = "shoot"
+[sub_resource type="Animation" id=18]
 length = 0.5
 tracks/0/type = "transform"
 tracks/0/path = NodePath("mesh/Skeleton:head")
@@ -1281,8 +1273,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.45, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=11]
-resource_name = "sit_down"
+[sub_resource type="Animation" id=19]
 length = 0.85
 tracks/0/type = "transform"
 tracks/0/path = NodePath("mesh/Skeleton:head")
@@ -1425,8 +1416,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0.00424504, 0, 0.0334121, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0.0233819, 0, 0.184022, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0.0584025, 0, 0.459639, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, 0.109833, 0, 0.864398, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 0.178198, 0, 1.40244, 0, 0, 0, 1, 1, 1, 1, 0.733333, 1, 0.70001, 0, 5.50917, 0, 0, 0, 1, 1, 1, 1, 0.8, 1, 0.740859, 0, 5.83066, 0, 0, 0, 1, 1, 1, 1, 0.85, 1, 0.750862, 0, 5.90938, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "sitwiggle-loop"
+[sub_resource type="Animation" id=20]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -1570,41 +1560,40 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0.750862, 0, 5.90938, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0.79762, 0, 5.61979, 0, 0, 0, 1, 1, 1, 1, 0.266667, 1, 1.1537, 0, 3.4144, 0, 0, 0, 1, 1, 1, 1, 0.333333, 1, 1.20046, 0, 3.1248, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 1.1537, 0, 3.4144, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, 0.79762, 0, 5.61979, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0.750862, 0, 5.90938, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=13]
-resource_name = "squished"
+[sub_resource type="Animation" id=21]
 length = 2.0
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:scale:x")
+tracks/0/path = NodePath("mesh:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:y")
+tracks/1/path = NodePath("mesh:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0, 0.507176, 0.00745597, -0.123821, 0.0264108, 0.0783746, -0.00203159, 0.0237087, -0.25, 0, 0.3375, 0.0291183, 1.2, -0.162235, 0.00406325, 0.0602208, -0.0019424, 0.948086, -0.156866, 0.00609475, 0.130764, 0.00406319, 1.09639, -0.0809535, -0.00203156, 0.0614376, 0.00203156, 1, -0.0214754, -0.0528215, 0.109524, -0.00315607 ),
+"points": PoolRealArray( 0.4, -0.25, 0, 0, 0.507176, 0.00745597, -0.123821, 0.0264108, 0.0783746, -0.00203159, 0.0237087, -0.25, 0, 0.3375, 0.0291183, 0.5, -0.162235, 0.00406325, 0.0602208, -0.0019424, 0.35, -0.156866, 0.00609475, 0.130764, 0.00406319, 0.45, -0.0809535, -0.00203156, 0.0614376, 0.00203156, 0.4, -0.0214754, -0.0528215, 0.109524, -0.00315607 ),
 "times": PoolRealArray( 0, 0.2, 1.2, 1.5, 1.7, 1.9, 2 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:scale:z")
+tracks/2/path = NodePath("mesh:scale:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=22]
 length = 0.5
 tracks/0/type = "transform"
 tracks/0/path = NodePath("mesh/Skeleton:head")
@@ -1747,7 +1736,7 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=23]
 length = 1.33333
 loop = true
 tracks/0/type = "transform"
@@ -1891,89 +1880,89 @@ tracks/19/imported = true
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 1.36387, 0, -0.128021, 0, 0, 0, 1, 0.994176, 1, 0.744645, 1.33333, 1, 1.36387, 0, -0.128021, 0, 0, 0, 1, 0.994176, 1, 0.744645 )
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "walk-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "running-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "shoot"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "jump-air-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "land"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "squished"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "idle-loop"
 
-[sub_resource type="AnimationNodeTimeScale" id=24]
+[sub_resource type="AnimationNodeTimeScale" id=32]
 
-[sub_resource type="AnimationNodeTimeScale" id=25]
+[sub_resource type="AnimationNodeTimeScale" id=33]
 
-[sub_resource type="AnimationNodeBlend2" id=26]
+[sub_resource type="AnimationNodeBlend2" id=34]
 
-[sub_resource type="AnimationNodeOneShot" id=27]
+[sub_resource type="AnimationNodeOneShot" id=35]
 filter_enabled = true
 filters = [ "Armature/Skeleton:forearml", "Armature/Skeleton:forearmr", "Armature/Skeleton:head", "Armature/Skeleton:neck", "Armature/Skeleton:spine_0", "Armature/Skeleton:spine_1", "Armature/Skeleton:upperarml", "Armature/Skeleton:upperarmr", "Armature001/Skeleton:elbowikl", "Armature001/Skeleton:elbowikr", "Armature001/Skeleton:forearml", "Armature001/Skeleton:forearmr", "Armature001/Skeleton:handikl", "Armature001/Skeleton:handikr", "Armature001/Skeleton:head", "Armature001/Skeleton:neck", "Armature001/Skeleton:spine_0", "Armature001/Skeleton:spine_1", "Armature001/Skeleton:upperarml", "Armature001/Skeleton:upperarmr", "mesh/Skeleton:elbowikl", "mesh/Skeleton:elbowikr", "mesh/Skeleton:forearml", "mesh/Skeleton:forearmr", "mesh/Skeleton:handikl", "mesh/Skeleton:handikr", "mesh/Skeleton:head", "mesh/Skeleton:neck", "mesh/Skeleton:spine_0", "mesh/Skeleton:spine_1", "mesh/Skeleton:upperarml", "mesh/Skeleton:upperarmr" ]
 
-[sub_resource type="AnimationNodeBlend3" id=28]
+[sub_resource type="AnimationNodeBlend3" id=36]
 
-[sub_resource type="AnimationNodeOneShot" id=29]
+[sub_resource type="AnimationNodeOneShot" id=37]
 
-[sub_resource type="AnimationNodeOneShot" id=30]
+[sub_resource type="AnimationNodeOneShot" id=38]
 fadeout_time = 0.4
 
-[sub_resource type="AnimationNodeTimeScale" id=31]
+[sub_resource type="AnimationNodeTimeScale" id=39]
 
-[sub_resource type="AnimationNodeOneShot" id=32]
+[sub_resource type="AnimationNodeOneShot" id=40]
 
-[sub_resource type="AnimationNodeBlendTree" id=33]
+[sub_resource type="AnimationNodeBlendTree" id=41]
 graph_offset = Vector2( 637.6, 289.6 )
-nodes/Animation/node = SubResource( 23 )
+nodes/Animation/node = SubResource( 31 )
 nodes/Animation/position = Vector2( 288, 96 )
-"nodes/Animation 2/node" = SubResource( 16 )
+"nodes/Animation 2/node" = SubResource( 24 )
 "nodes/Animation 2/position" = Vector2( 112, 256 )
-"nodes/Animation 3/node" = SubResource( 17 )
+"nodes/Animation 3/node" = SubResource( 25 )
 "nodes/Animation 3/position" = Vector2( 176, 416 )
-"nodes/Animation 4/node" = SubResource( 18 )
+"nodes/Animation 4/node" = SubResource( 26 )
 "nodes/Animation 4/position" = Vector2( 1568, 528 )
-"nodes/Animation 5/node" = SubResource( 19 )
+"nodes/Animation 5/node" = SubResource( 27 )
 "nodes/Animation 5/position" = Vector2( 640, 592 )
-"nodes/Animation 6/node" = SubResource( 20 )
+"nodes/Animation 6/node" = SubResource( 28 )
 "nodes/Animation 6/position" = Vector2( 1296, 528 )
-"nodes/Animation 7/node" = SubResource( 21 )
+"nodes/Animation 7/node" = SubResource( 29 )
 "nodes/Animation 7/position" = Vector2( 1079.4, 537.6 )
-"nodes/Animation 8/node" = SubResource( 22 )
+"nodes/Animation 8/node" = SubResource( 30 )
 "nodes/Animation 8/position" = Vector2( 1776, 608 )
-nodes/TimeScale/node = SubResource( 25 )
+nodes/TimeScale/node = SubResource( 33 )
 nodes/TimeScale/position = Vector2( 352, 240 )
-"nodes/TimeScale 3/node" = SubResource( 24 )
+"nodes/TimeScale 3/node" = SubResource( 32 )
 "nodes/TimeScale 3/position" = Vector2( 880, 496 )
-nodes/air/node = SubResource( 26 )
+nodes/air/node = SubResource( 34 )
 nodes/air/position = Vector2( 1536, 320 )
-nodes/attack/node = SubResource( 27 )
+nodes/attack/node = SubResource( 35 )
 nodes/attack/position = Vector2( 1760, 320 )
-nodes/iwr_blend/node = SubResource( 28 )
+nodes/iwr_blend/node = SubResource( 36 )
 nodes/iwr_blend/position = Vector2( 656, 192 )
-nodes/jump/node = SubResource( 29 )
+nodes/jump/node = SubResource( 37 )
 nodes/jump/position = Vector2( 1104, 256 )
-nodes/land/node = SubResource( 30 )
+nodes/land/node = SubResource( 38 )
 nodes/land/position = Vector2( 1328, 240 )
 nodes/output/position = Vector2( 2192, 336 )
-nodes/runscale/node = SubResource( 31 )
+nodes/runscale/node = SubResource( 39 )
 nodes/runscale/position = Vector2( 416, 400 )
-nodes/squished/node = SubResource( 32 )
+nodes/squished/node = SubResource( 40 )
 nodes/squished/position = Vector2( 1984, 336 )
-node_connections = [ "output", 0, "squished", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "TimeScale", 0, "Animation 2", "TimeScale 3", 0, "Animation 5", "runscale", 0, "Animation 3", "air", 0, "land", "air", 1, "Animation 6", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "attack", 0, "air", "attack", 1, "Animation 4" ]
+node_connections = [ "output", 0, "squished", "runscale", 0, "Animation 3", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "air", 0, "land", "air", 1, "Animation 6", "TimeScale", 0, "Animation 2", "TimeScale 3", 0, "Animation 5", "attack", 0, "air", "attack", 1, "Animation 4", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "squished", 0, "attack", "squished", 1, "Animation 8", "land", 0, "jump", "land", 1, "Animation 7" ]
 
 [node name="bearyebil" type="KinematicBody"]
 collision_layer = 2147483650
@@ -2090,7 +2079,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.21547, 0 )
-shape = SubResource( 34 )
+shape = SubResource( 3 )
 
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.67339, 1.5718 )
@@ -2099,7 +2088,7 @@ amount = 1
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 39 )
+process_material = SubResource( 8 )
 draw_pass_1 = ExtResource( 1 )
 
 [node name="Hitbox" type="Area" parent="."]
@@ -2108,7 +2097,7 @@ collision_layer = 0
 collision_mask = 2147483656
 
 [node name="CollisionShape" type="CollisionShape" parent="Hitbox"]
-shape = SubResource( 40 )
+shape = SubResource( 9 )
 
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="Hitbox"]
 stream = ExtResource( 3 )
@@ -2120,7 +2109,7 @@ amount = 16
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.85
-process_material = SubResource( 41 )
+process_material = SubResource( 10 )
 draw_pass_1 = ExtResource( 1 )
 
 [node name="Listener" type="Listener" parent="."]
@@ -2134,22 +2123,22 @@ pitch_scale = 1.7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle-loop"
-anims/idle-loop = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/jump-air-loop = SubResource( 5 )
-anims/land = SubResource( 6 )
-anims/pick-up = SubResource( 7 )
-anims/pick-up-idle-loop = SubResource( 8 )
-anims/running-loop = SubResource( 9 )
-anims/shoot = SubResource( 10 )
-anims/sit_down = SubResource( 11 )
-anims/sitwiggle-loop = SubResource( 12 )
-anims/squished = SubResource( 13 )
-anims/throw = SubResource( 14 )
-anims/walk-loop = SubResource( 15 )
+anims/idle-loop = SubResource( 11 )
+anims/jump = SubResource( 12 )
+anims/jump-air-loop = SubResource( 13 )
+anims/land = SubResource( 14 )
+anims/pick-up = SubResource( 15 )
+anims/pick-up-idle-loop = SubResource( 16 )
+anims/running-loop = SubResource( 17 )
+anims/shoot = SubResource( 18 )
+anims/sit_down = SubResource( 19 )
+anims/sitwiggle-loop = SubResource( 20 )
+anims/squished = SubResource( 21 )
+anims/throw = SubResource( 22 )
+anims/walk-loop = SubResource( 23 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 33 )
+tree_root = SubResource( 41 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/TimeScale/scale = 1.0

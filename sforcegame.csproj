@@ -62,6 +62,7 @@
     <Compile Include="Props\speedplatform.cs" />
     <Compile Include="scripts\GameData.cs" />
     <Compile Include="scripts\FallDeathBox.cs" />
+    <Compile Include="scripts\PauseMenu.cs" />
     <Compile Include="scripts\Savepoint.cs" />
     <Compile Include="scripts\TitleScreen.cs" />
     <Compile Include="scripts\spikeman.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="scripts\StateMachine.cs" />
     <Compile Include="scripts\wheelobstacle.cs" />
     <Compile Include="scripts\HUD.cs" />
+    <Compile Include="scripts\ysfile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

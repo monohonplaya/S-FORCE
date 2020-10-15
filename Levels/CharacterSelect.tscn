@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/CabinSketch-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/CharacterSelect.cs" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 72
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 70
 outline_color = Color( 1, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -24,8 +27,6 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
 color = Color( 0.054902, 0.0470588, 0.0705882, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -42,7 +43,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 1192.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "SELECT CHARACTER"
 align = 1
 
@@ -50,7 +51,7 @@ align = 1
 margin_top = 89.0
 margin_right = 1192.0
 margin_bottom = 174.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "(visual only)"
 align = 1
 
@@ -58,7 +59,7 @@ align = 1
 margin_top = 178.0
 margin_right = 1192.0
 margin_bottom = 267.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_hover = Color( 0.776471, 0, 1, 1 )
 text = "beary pink"
 flat = true
@@ -67,7 +68,7 @@ flat = true
 margin_top = 271.0
 margin_right = 1192.0
 margin_bottom = 360.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "beary ebil"
 flat = true
@@ -76,10 +77,32 @@ flat = true
 margin_top = 364.0
 margin_right = 1192.0
 margin_bottom = 453.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_hover = Color( 1, 0.780392, 0.980392, 1 )
 text = "beary smol"
 flat = true
+
+[node name="LoadScreen" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="LoadScreen"]
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.7
+margin_right = 306.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 1 )
+text = "LOADING..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_OnPinkPressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_OnEbilPressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_OnSmolPressed"]

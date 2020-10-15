@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/desertStage.ogg-5d73a70cdb730fff41338cf92f26224b.oggstr"
+
+[deps]
+
+source_file="res://Music/desertStage.ogg"
+dest_files=[ "res://.import/desertStage.ogg-5d73a70cdb730fff41338cf92f26224b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

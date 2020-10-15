@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class GameData : Node
 {
@@ -14,6 +15,8 @@ public class GameData : Node
     public static int CollectedTopKek = 0;
     public static int PlayerHealth;
     public static CharSelect SelectedCharacter = CharSelect.Smol;
+    public static List<String> YSFiles = new List<String>();
+    public static HashSet<int> CollectedYSSet = new HashSet<int>();
 
     public override void _Ready()
     {

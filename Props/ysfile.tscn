@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://glb/texat.material" type="Material" id=1]
+[ext_resource path="res://scripts/ysfile.cs" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Plane001"
@@ -18,7 +19,81 @@ surfaces/0 = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "spin-loop"
+resource_name = "pickedup"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Plane001:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -28.198, -0.25, 0, 0.25, 0, -28.198, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Plane001:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 73.7588, -0.25, 0, 0.476721, 966.107, 4950.3, -0.256048, -4876.54, 0.133528, 3473.39 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Plane001:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -68.226, -0.25, 0, 0.25, 0, -68.226, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Plane001:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.999999, 1 ), Vector3( 1.5, 1.5, 1.5 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 0.4, 0.4, 0.4 ), Vector3( 0.5, 0.5, 0.5 ), Vector3( 0.1, 0.1, 0.1 ) ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Plane001:translation:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 2.98023e-08, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Plane001:translation:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0.930824, -0.25, 0, 0.0796921, 1.15813, 3.40359, -0.169883, 0.0626018, 0.175609, 0.187805, 0.555214, 0, -0.0313008, 0, 0, 2.46457, -0.208059, 0.125203, 0.156521, 0.0313008, 0.336108, -0.000269115, -0.125204, 0.156252, -0.031301 ),
+"times": PoolRealArray( 0, 0.259119, 0.5, 0.778311, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Plane001:translation:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
 length = 2.7
 loop = true
 tracks/0/type = "value"
@@ -34,19 +109,26 @@ tracks/0/keys = {
 "values": [ Vector3( -28.198, 0, -68.226 ), Vector3( -28.198, 360, -68.226 ) ]
 }
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape" id=4]
 
 [node name="ysfile" type="Area"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 2 )
+text = "kawaii"
 
 [node name="Plane001" type="MeshInstance" parent="."]
-transform = Transform( -0.304522, 0.450574, -0.839195, -0.818442, 0.326922, 0.47252, 0.487257, 0.830725, 0.269214, 2.98023e-08, 0.94787, 0 )
+transform = Transform( 0.525043, 0.091443, 0.846149, -0.818442, 0.326922, 0.47252, -0.233416, -0.940616, 0.246489, 2.98023e-08, 0.930824, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spin-loop"
-anims/spin-loop = SubResource( 2 )
+anims/pickedup = SubResource( 2 )
+anims/spin-loop = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="onPickupAnimFinished"]

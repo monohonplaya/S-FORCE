@@ -1563,33 +1563,33 @@ tracks/19/keys = PoolRealArray( 0, 1, 0.750862, 0, 5.90938, 0, 0, 0, 1, 1, 1, 1,
 [sub_resource type="Animation" id=21]
 length = 2.0
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:scale:x")
+tracks/0/path = NodePath("mesh:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:scale:y")
+tracks/1/path = NodePath("mesh:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0, 0.507176, 0.00745597, -0.123821, 0.0264108, 0.0783746, -0.00203159, 0.0237087, -0.25, 0, 0.3375, 0.0291183, 1.2, -0.162235, 0.00406325, 0.0602208, -0.0019424, 0.948086, -0.156866, 0.00609475, 0.130764, 0.00406319, 1.09639, -0.0809535, -0.00203156, 0.0614376, 0.00203156, 1, -0.0214754, -0.0528215, 0.109524, -0.00315607 ),
+"points": PoolRealArray( 0.4, -0.25, 0, 0, 0.507176, 0.00745597, -0.123821, 0.0264108, 0.0783746, -0.00203159, 0.0237087, -0.25, 0, 0.3375, 0.0291183, 0.5, -0.162235, 0.00406325, 0.0602208, -0.0019424, 0.35, -0.156866, 0.00609475, 0.130764, 0.00406319, 0.45, -0.0809535, -0.00203156, 0.0614376, 0.00203156, 0.4, -0.0214754, -0.0528215, 0.109524, -0.00315607 ),
 "times": PoolRealArray( 0, 0.2, 1.2, 1.5, 1.7, 1.9, 2 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:scale:z")
+tracks/2/path = NodePath("mesh:scale:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 
@@ -1962,7 +1962,7 @@ nodes/runscale/node = SubResource( 39 )
 nodes/runscale/position = Vector2( 416, 400 )
 nodes/squished/node = SubResource( 40 )
 nodes/squished/position = Vector2( 1984, 336 )
-node_connections = [ "output", 0, "squished", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "TimeScale", 0, "Animation 2", "TimeScale 3", 0, "Animation 5", "runscale", 0, "Animation 3", "air", 0, "land", "air", 1, "Animation 6", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "attack", 0, "air", "attack", 1, "Animation 4" ]
+node_connections = [ "output", 0, "squished", "TimeScale 3", 0, "Animation 5", "squished", 0, "attack", "squished", 1, "Animation 8", "land", 0, "jump", "land", 1, "Animation 7", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "TimeScale", 0, "Animation 2", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "attack", 0, "air", "attack", 1, "Animation 4", "air", 0, "land", "air", 1, "Animation 6", "runscale", 0, "Animation 3" ]
 
 [node name="bearysmol" type="KinematicBody"]
 collision_layer = 2
