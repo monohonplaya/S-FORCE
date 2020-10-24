@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://ModelsAndCollisions/Level2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/PlayerController.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Props/spikedognavmesh.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Props/4wallwheelobstacle.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Props/carpet.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Props/truck.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Music/desertStage.ogg" type="AudioStream" id=19]
 
 [sub_resource type="MultiMesh" id=1]
 transform_format = 1
@@ -579,6 +581,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1185.93, 239.061, 889.744 )
 
 [node name="carpet" parent="." instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2089.88, -202.071, -0.999241 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = -1.0
+autoplay = true
+
+[node name="truck" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1478.41, -201.448, -1320.26 )
 [connection signal="body_entered" from="FallDeathBox" to="FallDeathBox" method="_onFallDeathBoxBodyEntered"]
 
 [editable path="Level2"]

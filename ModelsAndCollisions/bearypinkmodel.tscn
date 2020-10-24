@@ -118,7 +118,7 @@ nodes/runscale/node = SubResource( 17 )
 nodes/runscale/position = Vector2( 416, 400 )
 nodes/squished/node = SubResource( 18 )
 nodes/squished/position = Vector2( 1984, 336 )
-node_connections = [ "output", 0, "squished", "TimeScale 3", 0, "Animation 5", "squished", 0, "attack", "squished", 1, "Animation 8", "land", 0, "jump", "land", 1, "Animation 7", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "TimeScale", 0, "Animation 2", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "attack", 0, "air", "attack", 1, "Animation 4", "air", 0, "land", "air", 1, "Animation 6", "runscale", 0, "Animation 3" ]
+node_connections = [ "output", 0, "squished", "runscale", 0, "Animation 3", "attack", 0, "air", "attack", 1, "Animation 4", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "TimeScale 3", 0, "Animation 5", "air", 0, "land", "air", 1, "Animation 6", "land", 0, "jump", "land", 1, "Animation 7", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "squished", 0, "attack", "squished", 1, "Animation 8", "TimeScale", 0, "Animation 2" ]
 
 [node name="bearypink" instance=ExtResource( 1 )]
 

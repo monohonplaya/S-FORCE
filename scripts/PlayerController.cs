@@ -38,6 +38,7 @@ public class PlayerController : Spatial
     private float _minPitch = -90;
     [Export(PropertyHint.Range, "0,90")]
     private float _maxPitch = 90;
+    private AudioStreamPlayer3D _collectSound;
     private Vector3 _velocity;
     public KinematicBody _player { get; private set; } = null;
     private HUD _HUD;
@@ -94,11 +95,13 @@ public class PlayerController : Spatial
         }
         _player = (KinematicBody)_playerScene.Instance();
         AddChild(_player);
+        
 
         // _player = (KinematicBody)GetNode("bearypink");
         _hitbox = (Area)_player.GetNode("Hitbox");
         _hitbox.Monitoring = false;
         _playerDirection = _player.Rotation;
+        _hitbox.Connect("body_entered", this, nameof(_onHitboxBodyEntered));
 
         /* this is needed because moving the animation nodes in ebil and smol causes the animation paths to
            be wrong and every bone for every animation needs to be manually edited to fix it >_<
@@ -126,6 +129,10 @@ public class PlayerController : Spatial
         _mainCam.AddException(_player);
         _fallCam = (ClippedCamera)GetNode("FallCamera");
         _attackSound = (AudioStreamPlayer3D)_player.GetNode("Hitbox/AttackSound");
+        _collectSound = new AudioStreamPlayer3D();
+        _collectSound.Stream = ResourceLoader.Load("res://SFX/collect.wav") as AudioStream;
+        _collectSound.UnitDb = 5F;
+        _player.AddChild(_collectSound);
         _HUD = (HUD)GetNode("HUD");
         _HUD.UpdatePlayerHealth();
         Input.SetMouseMode(Input.MouseMode.Captured);
@@ -209,6 +216,7 @@ public class PlayerController : Spatial
     }
     public void IncrementTopKeks()
     {
+        _collectSound.Play();
         GameData.CollectedTopKek += 1;
         _HUD.UpdateTopKekCounter();
     }
@@ -289,11 +297,14 @@ public class PlayerController : Spatial
     }
     public void _onHitboxBodyEntered(Node body)
     {
-        spikeman kb = (spikeman)body;
-        Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
-        //knock.y += .2F;
-        kb.KnockBack(knock.Normalized(), 100F);
-        kb.BeDamaged(20);
+        spikeman kb = body as spikeman;
+        if (kb != null)
+        {
+            Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
+            //knock.y += .2F;
+            kb.KnockBack(knock.Normalized(), 100F);
+            kb.BeDamaged(20);
+        }
     }
     public void _onKnockBackTimeout()
     {

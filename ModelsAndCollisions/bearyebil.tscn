@@ -108,10 +108,7 @@ scale = 0.6
 scale_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
 
-[sub_resource type="SphereShape" id=9]
-radius = 1.26598
-
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=9]
 direction = Vector3( -1, 0, 0 )
 spread = 180.0
 flatness = 0.38
@@ -124,6 +121,9 @@ scale = 0.05
 color_ramp = SubResource( 5 )
 hue_variation = 0.1
 hue_variation_random = 0.99
+
+[sub_resource type="SphereShape" id=10]
+radius = 1.26598
 
 [sub_resource type="Animation" id=11]
 length = 5.35
@@ -1962,7 +1962,7 @@ nodes/runscale/node = SubResource( 39 )
 nodes/runscale/position = Vector2( 416, 400 )
 nodes/squished/node = SubResource( 40 )
 nodes/squished/position = Vector2( 1984, 336 )
-node_connections = [ "output", 0, "squished", "runscale", 0, "Animation 3", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "air", 0, "land", "air", 1, "Animation 6", "TimeScale", 0, "Animation 2", "TimeScale 3", 0, "Animation 5", "attack", 0, "air", "attack", 1, "Animation 4", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "squished", 0, "attack", "squished", 1, "Animation 8", "land", 0, "jump", "land", 1, "Animation 7" ]
+node_connections = [ "output", 0, "squished", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "runscale", 0, "Animation 3", "TimeScale 3", 0, "Animation 5", "air", 0, "land", "air", 1, "Animation 6", "attack", 0, "air", "attack", 1, "Animation 4", "TimeScale", 0, "Animation 2" ]
 
 [node name="bearyebil" type="KinematicBody"]
 collision_layer = 2147483650
@@ -2091,17 +2091,6 @@ explosiveness = 1.0
 process_material = SubResource( 8 )
 draw_pass_1 = ExtResource( 1 )
 
-[node name="Hitbox" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12439, 1.23487 )
-collision_layer = 0
-collision_mask = 2147483656
-
-[node name="CollisionShape" type="CollisionShape" parent="Hitbox"]
-shape = SubResource( 9 )
-
-[node name="AttackSound" type="AudioStreamPlayer3D" parent="Hitbox"]
-stream = ExtResource( 3 )
-
 [node name="Particles2" type="Particles" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.67339, 1.5718 )
 emitting = false
@@ -2109,8 +2098,19 @@ amount = 16
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.85
-process_material = SubResource( 10 )
+process_material = SubResource( 9 )
 draw_pass_1 = ExtResource( 1 )
+
+[node name="Hitbox" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12439, 1.23487 )
+collision_layer = 0
+collision_mask = 2147483656
+
+[node name="CollisionShape" type="CollisionShape" parent="Hitbox"]
+shape = SubResource( 10 )
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="Hitbox"]
+stream = ExtResource( 3 )
 
 [node name="Listener" type="Listener" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98437, 0 )
