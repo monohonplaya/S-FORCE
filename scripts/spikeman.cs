@@ -7,7 +7,7 @@ public class spikeman : KinematicBody
     private float _speed = 10F;
     [Export]
     private float _hopSpeed = 30F;
-    private float _currrentSpeed = 0;
+    private float _currentSpeed = 0;
     [Export]    
     private float _gravity = 3F;
     [Export]
@@ -100,13 +100,13 @@ public class spikeman : KinematicBody
                     if (IsOnFloor())
                     {
                         _animTree.Set("parameters/AirSlither/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/AirSlither/blend_amount"), 0, 0.8F));  
-                        _currrentSpeed = _speed;
+                        _currentSpeed = _speed;
                     }
                     else
                     {
                         _animTree.Set("parameters/AirSlither/blend_amount", Mathf.Lerp((float)_animTree.Get("parameters/AirSlither/blend_amount"), 1, 0.6F));
                         _direction = Transform.basis.z;
-                        _currrentSpeed = _hopSpeed;
+                        _currentSpeed = _hopSpeed;
                     }
                 }
                 break;
@@ -123,7 +123,7 @@ public class spikeman : KinematicBody
                             _pathInd += 1;
                         }
                         Rotation = new Vector3(0, Mathf.LerpAngle(Rotation.y, Mathf.Atan2(_direction.x, _direction.z), .2F), 0);
-                        _currrentSpeed = _speed;
+                        _currentSpeed = _speed;
                     }
                     else
                     {
@@ -136,7 +136,7 @@ public class spikeman : KinematicBody
                         _animTree.Set("parameters/jump/active", true);
                         _yVel = _jumpPower;
                         _direction = _player.GlobalTransform.origin - GlobalTransform.origin;
-                        _currrentSpeed = _hopSpeed;
+                        _currentSpeed = _hopSpeed;
                         Rotation = new Vector3(0, Mathf.LerpAngle(Rotation.y, Mathf.Atan2(_direction.x, _direction.z), .4F), 0);
                     }
                 }
@@ -161,7 +161,7 @@ public class spikeman : KinematicBody
             _velVec = MoveAndSlide(_velVec, Vector3.Up);
             return;
         }
-        _velVec = _direction.Normalized() * _currrentSpeed;
+        _velVec = _direction.Normalized() * _currentSpeed;
         _velVec.y = _yVel;
         _velVec = MoveAndSlide(_velVec, Vector3.Up);
         Vector3 closest = _nav.GetClosestPoint(Translation);

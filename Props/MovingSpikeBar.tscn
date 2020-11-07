@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Props/spikybar.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "UpDown"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spikybar:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 12, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="spikybar" parent="." instance=ExtResource( 1 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "UpDown"
+anims/UpDown = SubResource( 1 )

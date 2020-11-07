@@ -569,7 +569,8 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.533428, -0.963885, -1
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="firewood"]
 stream = ExtResource( 14 )
-unit_db = 2.0
+unit_db = 10.0
+max_db = 3.738
 autoplay = true
 
 [node name="bearypink" parent="." instance=ExtResource( 3 )]

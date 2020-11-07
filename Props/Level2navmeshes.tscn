@@ -14,9 +14,6 @@ polygons = [ PoolIntArray( 0, 2, 1 ), PoolIntArray( 0, 3, 2 ), PoolIntArray( 4, 
 
 [node name="Level2navmeshes" instance=ExtResource( 1 )]
 
-[node name="road001" parent="." index="0"]
-visible = false
-
 [node name="Navigation" type="Navigation" parent="road001" index="0"]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="road001/Navigation" index="0"]

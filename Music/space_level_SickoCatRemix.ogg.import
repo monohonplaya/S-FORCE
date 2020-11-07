@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/space_level_SickoCatRemix.ogg-bea2b44b2eb515ecf35315e6dd0c345e.oggstr"
+
+[deps]
+
+source_file="res://Music/space_level_SickoCatRemix.ogg"
+dest_files=[ "res://.import/space_level_SickoCatRemix.ogg-bea2b44b2eb515ecf35315e6dd0c345e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

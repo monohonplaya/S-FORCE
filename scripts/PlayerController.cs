@@ -38,7 +38,7 @@ public class PlayerController : Spatial
     private float _minPitch = -90;
     [Export(PropertyHint.Range, "0,90")]
     private float _maxPitch = 90;
-    private AudioStreamPlayer3D _collectSound;
+    private AudioStreamPlayer _collectSound;
     private Vector3 _velocity;
     public KinematicBody _player { get; private set; } = null;
     private HUD _HUD;
@@ -129,9 +129,9 @@ public class PlayerController : Spatial
         _mainCam.AddException(_player);
         _fallCam = (ClippedCamera)GetNode("FallCamera");
         _attackSound = (AudioStreamPlayer3D)_player.GetNode("Hitbox/AttackSound");
-        _collectSound = new AudioStreamPlayer3D();
+        _collectSound = new AudioStreamPlayer();
         _collectSound.Stream = ResourceLoader.Load("res://SFX/collect.wav") as AudioStream;
-        _collectSound.UnitDb = 5F;
+        _collectSound.VolumeDb = 4F;
         _player.AddChild(_collectSound);
         _HUD = (HUD)GetNode("HUD");
         _HUD.UpdatePlayerHealth();
@@ -203,16 +203,16 @@ public class PlayerController : Spatial
     }
     public override void _Process(float delta) 
     {
-        if (Input.IsActionJustPressed("ui_cancel")){
-            if (Input.GetMouseMode() == Input.MouseMode.Visible)
-            {
-                Input.SetMouseMode(Input.MouseMode.Hidden);
-            }
-            else
-            {
-                Input.SetMouseMode(Input.MouseMode.Visible);
-            }
-        }
+        // if (Input.IsActionJustPressed("ui_cancel")){
+        //     if (Input.GetMouseMode() == Input.MouseMode.Visible)
+        //     {
+        //         Input.SetMouseMode(Input.MouseMode.Hidden);
+        //     }
+        //     else
+        //     {
+        //         Input.SetMouseMode(Input.MouseMode.Visible);
+        //     }
+        // }
     }
     public void IncrementTopKeks()
     {
@@ -297,11 +297,15 @@ public class PlayerController : Spatial
     }
     public void _onHitboxBodyEntered(Node body)
     {
-        spikeman kb = body as spikeman;
-        if (kb != null)
+        if (body.IsInGroup("spikedog"))
         {
+            Spikedog sd = body as Spikedog;
+            sd.HitReaction();
+        }
+        if (body.IsInGroup("spikeman"))
+        {
+            spikeman kb = body as spikeman;
             Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
-            //knock.y += .2F;
             kb.KnockBack(knock.Normalized(), 100F);
             kb.BeDamaged(20);
         }
@@ -461,6 +465,21 @@ public class PlayerController : Spatial
             _attackSound.Play();
             _partic1.Restart();
             _partic2.Restart();
+        }
+        if (_hitbox.Monitoring == true)
+        {
+            // I don't know how to do collisions of still bodies in Godot
+            // this seems to increase the chance of the hitbox collision, but not always.
+            foreach(Node body in _hitbox.GetOverlappingBodies())
+            {
+                if (body.IsInGroup("spikedog"))
+                {
+                    Spikedog sd = body as Spikedog;
+                    sd.HitReaction();
+                    _hitbox.Monitoring = false;
+                    break;
+                }
+            }
         }
         if (_knockBackState)
         {

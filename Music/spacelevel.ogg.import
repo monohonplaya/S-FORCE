@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/spacelevel.ogg-3e63f07cdbbb38a9a78b6b57fd6ea0b6.oggstr"
+
+[deps]
+
+source_file="res://Music/spacelevel.ogg"
+dest_files=[ "res://.import/spacelevel.ogg-3e63f07cdbbb38a9a78b6b57fd6ea0b6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

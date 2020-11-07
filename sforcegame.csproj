@@ -57,13 +57,17 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="scripts\PathIncrement.cs" />
     <Compile Include="scripts\CharacterSelect.cs" />
     <Compile Include="scripts\Goal.cs" />
-    <Compile Include="Props\speedplatform.cs" />
+    <Compile Include="scripts\speedplatform.cs" />
     <Compile Include="scripts\GameData.cs" />
     <Compile Include="scripts\FallDeathBox.cs" />
     <Compile Include="scripts\PauseMenu.cs" />
     <Compile Include="scripts\Savepoint.cs" />
+    <Compile Include="scripts\Spikedog.cs" />
+    <Compile Include="scripts\SpikedogGen.cs" />
+    <Compile Include="scripts\SpikyBar.cs" />
     <Compile Include="scripts\TitleScreen.cs" />
     <Compile Include="scripts\spikeman.cs" />
     <Compile Include="scripts\topkek.cs" />

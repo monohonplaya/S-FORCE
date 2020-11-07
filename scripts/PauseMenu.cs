@@ -14,10 +14,12 @@ public class PauseMenu : Control
             GetTree().Paused = !GetTree().Paused;
             if (GetTree().Paused)
             {
+                Input.SetMouseMode(Input.MouseMode.Visible);
                 Show();
             }
             else
             {
+                Input.SetMouseMode(Input.MouseMode.Captured);
                 Hide();
             }
         }
