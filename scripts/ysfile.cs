@@ -17,9 +17,11 @@ public class ysfile : Area
         if (body.GetParent().GetType() == typeof(PlayerController))
         {
             PlayerController player = (PlayerController)body.GetParent();
+            player.PlayCollectSound();
             GameData.CollectedYSSet.Add(GameData.YSFiles.IndexOf(text));
             SetCollisionLayerBit(4, false);
             _animPlayer.Play("pickedup");
+            player.ShowYSNotice();
 
         }
     }

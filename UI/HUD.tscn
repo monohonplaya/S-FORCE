@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://textures/topkekicon.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/NanumPenScript-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://textures/health_over.png" type="Texture" id=4]
 [ext_resource path="res://textures/health_background.png" type="Texture" id=5]
 [ext_resource path="res://textures/health_fill.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/StandardTextFont.tres" type="DynamicFont" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -73,3 +74,21 @@ margin_bottom = 88.0
 texture_under = ExtResource( 5 )
 texture_over = ExtResource( 4 )
 texture_progress = ExtResource( 6 )
+
+[node name="YSCollectedMessage" type="RichTextLabel" parent="."]
+anchor_left = 0.7
+anchor_top = 0.889
+anchor_right = 0.967
+anchor_bottom = 0.948
+margin_left = -0.00012207
+margin_top = -0.120056
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 7 )
+visible_characters = 0
+percent_visible = 0.0
+text = "YSFile Collected!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

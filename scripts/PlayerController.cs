@@ -74,8 +74,9 @@ public class PlayerController : Spatial
     private Vector3 _speedBoostVector = Vector3.Zero;
     private AudioStreamPlayer3D _stepPlayer;
     private AudioStream[] _steps = new AudioStream[8];
-
-
+    private VBoxContainer _YSList;
+    private RichTextLabel _YSNotice;
+    private bool _fadeOutNotice = false;
     public override void _Ready()
     {
         GD.Randomize();
@@ -137,6 +138,8 @@ public class PlayerController : Spatial
         _HUD.UpdatePlayerHealth();
         Input.SetMouseMode(Input.MouseMode.Captured);
 
+        _YSList = GetNode<VBoxContainer>("PauseMenu/YSFileScreen/YSFileList/List");
+        _YSNotice = GetNode<RichTextLabel>("HUD/YSCollectedMessage");
         _stepPlayer = (AudioStreamPlayer3D)_player.GetNode("StepPlayer");
         for (int i = 0; i < _steps.Length; ++i)
         {
@@ -214,9 +217,20 @@ public class PlayerController : Spatial
         //     }
         // }
     }
-    public void IncrementTopKeks()
+    public void PlayCollectSound()
     {
         _collectSound.Play();
+    }
+    public async void ShowYSNotice()
+    {
+        _YSNotice.Text = "You got YSFile! (" + GameData.CollectedYSSet.Count + "/" + GameData.YSFiles.Count + ")";
+        _YSNotice.PercentVisible = 1F;
+        await ToSignal(GetTree().CreateTimer(1.7F), "timeout");
+        _fadeOutNotice = true;
+    }
+    public void IncrementTopKeks()
+    {
+        PlayCollectSound();
         GameData.CollectedTopKek += 1;
         _HUD.UpdateTopKekCounter();
     }
@@ -243,6 +257,19 @@ public class PlayerController : Spatial
         }
         if (!_dying)
             HandleMovement(delta);
+        if (_fadeOutNotice)
+        {
+            float tmp = _YSNotice.PercentVisible;
+            tmp -= 0.06F;
+            if (tmp < 0.01F)
+            {
+                _YSNotice.PercentVisible = 0F;
+                _fadeOutNotice = false;
+            }
+            else
+                _YSNotice.PercentVisible = tmp;
+                
+        }
     }
     public String GetState()
     {

@@ -53,7 +53,7 @@ extents = Vector3( 758.782, 56.1098, 1154.56 )
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 403.107, 21.5221, 302.052 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "forwardback"
 length = 2.0
 loop = true
@@ -70,8 +70,7 @@ tracks/0/keys = {
 "values": [ Vector3( -784.251, -105.964, 770.343 ), Vector3( -833.495, -105.964, 739.112 ), Vector3( -784.251, -105.964, 770.343 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "forwardback"
+[sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -95,7 +94,7 @@ tracks/0/keys = {
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 266.78, -56.9763, -172.325 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1717.25, 3.50905, 281.413 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -409.673, 3.50905, 5.82368 )
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="."]
 multimesh = SubResource( 1 )
@@ -203,6 +202,9 @@ transform = Transform( -0.513347, 0, -0.858181, 0, 1, 0, 0.858181, 0, -0.513347,
 
 [node name="speedplatform33" parent="speedplats" instance=ExtResource( 4 )]
 transform = Transform( -0.513347, 0, -0.858181, 0, 1, 0, 0.858181, 0, -0.513347, -1609.13, -214.202, 287.424 )
+
+[node name="speedplatform34" parent="speedplats" instance=ExtResource( 4 )]
+transform = Transform( -0.513347, 0, -0.858181, 0, 1, 0, 0.858181, 0, -0.513347, -1646.21, -214.662, 264.884 )
 
 [node name="topkeks" type="Spatial" parent="."]
 
@@ -659,15 +661,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1230.22, -109.488, 494.463 )
 [node name="Spatial2" parent="." instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2092.49, -208.787, 1.11315 )
 
-[node name="ysfile" parent="." instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1887.54, -253.916, 3.81707 )
-text = "lole"
-
 [node name="Spatial3" parent="." instance=ExtResource( 22 )]
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -902.743, -105.728, 701.031 )
 
 [node name="Spatial9" type="Spatial" parent="."]
-transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -784.64, -105.964, 770.097 )
+transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -810.095, -105.964, 753.953 )
 
 [node name="Spatial5" parent="Spatial9" instance=ExtResource( 22 )]
 
@@ -679,41 +677,97 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, 0, 33.7903 )
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="Spatial9"]
 autoplay = "forwardback"
-anims/forwardback = SubResource( 7 )
+anims/forwardback = SubResource( 6 )
 
 [node name="Spatial4" parent="." instance=ExtResource( 22 )]
 transform = Transform( 0.82532, 0, -0.564665, 0, 1, 0, 0.564665, 0, 0.82532, -906.656, -105.964, 723.026 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Spatial4"]
 autoplay = "forwardback"
-anims/forwardback = SubResource( 6 )
+anims/forwardback = SubResource( 7 )
 
 [node name="Spatial8" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -906.656, -105.964, 723.026 )
 
+[node name="speedplatform" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.535591, 0, -0.844477, 0, 1, 0, 0.844477, 0, -0.535591, -1201.02, -104.158, 513.244 )
+
+[node name="speedplatform2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -1529.58, -104.158, 1010.27 )
+
+[node name="speedplatform6" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477, -728.012, -104.158, 875.419 )
+
+[node name="speedplatform7" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477, -728.012, -104.158, 875.419 )
+
+[node name="speedplatform3" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477, -1220.34, -12.4341, 626.412 )
+
+[node name="speedplatform4" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.535591, 0, -0.844477, 0, 1, 0, 0.844477, 0, -0.535591, -1169.37, -12.4341, 598.612 )
+
+[node name="speedplatform5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1224.06, -12.434, 1157.13 )
+
 [node name="savepoint4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -1217.74, -104.772, 502.646 )
 
-[node name="speedplatform" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( -8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 19.7974, 0.614151, -0.0065918 )
+[node name="YSFiles" type="Spatial" parent="."]
 
-[node name="speedplatform2" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 8.53455, 0.614151, 595.696 )
+[node name="ysfile8" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1154.02, 79.4021, 681.73 )
+text = "with each year that passes your possible futures dwindle, your regrets accumulate and your ambitions become more modest. Eventually despair and regret will be all there is left"
 
-[node name="speedplatform6" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 613.218, 0.614151, 52.5045 )
+[node name="ysfile5" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1841.43, -310.466, -780.792 )
+text = "be careful when you wishe for fishe "
 
-[node name="speedplatform7" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 613.218, 0.614151, 52.5045 )
+[node name="ysfile3" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1478.39, -196.074, -1326.94 )
+text = "i want to fuck the electric bitch"
 
-[node name="speedplatform3" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 64.0922, 92.3379, 105.91 )
+[node name="ysfile" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1887.54, -253.916, 3.81707 )
+text = "i wish i had a gf to eat meronpan with "
 
-[node name="speedplatform4" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( 8.9407e-08, 0, -1, 0, 1, 0, 1, 0, 8.9407e-08, 92.2451, 92.3379, 55.1356 )
+[node name="ysfile2" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2106.4, -208.942, 4.03332 )
+text = "yosho.gif installed a viruse on my computer "
 
-[node name="speedplatform5" parent="savepoint4" instance=ExtResource( 4 )]
-transform = Transform( -1.19209e-07, 0, 1, 0, 1, 0, -1, 0, -1.19209e-07, 345.197, 92.338, 556.087 )
+[node name="ysfile4" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 322.076, -7.22453, 64.8854 )
+text = "when you successfully converge to the tailspin status quo, it is a task failed successfully (that you were trying not to fail), i call this the generalized wrist singularity "
+
+[node name="ysfile6" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1112.31, -43.3903, 910.965 )
+text = "when i got out of the psych ward i saw the word \"matrix\" somewhere and i freaked le frick out lol "
+
+[node name="ysfile7" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1259.11, -55.9373, 592.517 )
+text = "ilu cutie, pls respong "
+
+[node name="ysfile9" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -954.941, -192.456, -101.257 )
+text = "are you a griller saying this? >___< "
+
+[node name="ysfile10" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.538, -55.0578, -453.477 )
+text = "dont bully me or my friends "
+
+[node name="Spikebars" type="Spatial" parent="."]
+
+[node name="Spatial5" parent="Spikebars" instance=ExtResource( 22 )]
+transform = Transform( 6.73795e-08, -0.866025, -0.5, 1, 7.54979e-08, 3.99275e-09, 3.42911e-08, -0.5, 0.866025, -1385.13, -9.38594, 1044.79 )
+
+[node name="Spatial6" parent="Spikebars" instance=ExtResource( 22 )]
+transform = Transform( 6.73795e-08, -0.866025, -0.5, 1, 7.54979e-08, 3.99275e-09, 3.42911e-08, -0.5, 0.866025, -1393.78, -9.38594, 1060.66 )
+
+[node name="Spatial" parent="Spikebars" instance=ExtResource( 22 )]
+transform = Transform( 0.925249, 0, 0.379359, 0, 1, 0, -0.379359, 0, 0.925249, -44.0681, -70.3798, -660.346 )
+
+[node name="Spatial2" parent="Spikebars" instance=ExtResource( 22 )]
+transform = Transform( 0.91292, 0, 0.408139, 0, 1, 0, -0.408139, 0, 0.91292, -37.1751, -70.3798, -643.782 )
 [connection signal="body_entered" from="FallDeathBox" to="FallDeathBox" method="_onFallDeathBoxBodyEntered"]
 
 [editable path="Level2"]

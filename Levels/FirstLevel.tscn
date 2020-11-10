@@ -571,13 +571,32 @@ _physicsActive = false
 [node name="savepoint" parent="." instance=ExtResource( 22 )]
 transform = Transform( -0.538506, 0, 0.842622, 0, 1, 0, -0.842622, 0, -0.538506, -23.413, 26.5598, -183.043 )
 
-[node name="ysfile" parent="." instance=ExtResource( 24 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7386, -2.40204, -80.2034 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )
 volume_db = -14.0
 autoplay = true
+
+[node name="YSFiles" type="Spatial" parent="."]
+
+[node name="ysfile" parent="YSFiles" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7386, -2.40204, -80.2034 )
+text = "when i was a kid i was horrified at the thought that we are made of atoms which kinda implies hard determinism "
+
+[node name="ysfile2" parent="YSFiles" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5542, 16.2667, 198.693 )
+text = "garfield does not like isolated soy protein "
+
+[node name="ysfile3" parent="YSFiles" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514593, 13.5976, 204.83 )
+text = "so los kawaii when le little sister calls me baka hentai onii chan "
+
+[node name="ysfile4" parent="YSFiles" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.8674, 65.2328, -356.529 )
+text = "pls be my tsundere gf "
+
+[node name="ysfile5" parent="YSFiles" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.2065, -10.4723, -182.292 )
+text = "pls at least call me a baka "
 [connection signal="body_entered" from="goal_portal_platform/ExitArea" to="goal_portal_platform/ExitArea" method="_onExitAreaBodyEntered"]
 [connection signal="body_entered" from="FallDeathBox" to="FallDeathBox" method="_onFallDeathBoxBodyEntered"]
 
