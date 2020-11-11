@@ -189,7 +189,7 @@ shape = SubResource( 16 )
 shape = SubResource( 17 )
 
 [node name="cactusarea" parent="." index="17"]
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -668.315, -214.7, -127.656 )
 
 [node name="StaticBody" type="StaticBody" parent="Cube001" index="0"]
 
