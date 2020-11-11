@@ -1,7 +1,7 @@
 extends Node
 
 onready var vp = get_tree().get_root()
-onready var base_size = Vector2(1920, 1080)
+onready var base_size = Vector2(1980, 1080)
 
 
 func _ready():

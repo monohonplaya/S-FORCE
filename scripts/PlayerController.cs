@@ -74,9 +74,14 @@ public class PlayerController : Spatial
     private Vector3 _speedBoostVector = Vector3.Zero;
     private AudioStreamPlayer3D _stepPlayer;
     private AudioStream[] _steps = new AudioStream[8];
+    private AudioStreamPlayer _checkpointSound;
+    private AudioStreamPlayer _speedSound;
     private VBoxContainer _YSList;
-    private RichTextLabel _YSNotice;
+    private Label _YSNotice;
+    private Label _checkpointNotice;
     private bool _fadeOutNotice = false;
+    private bool _ignoreMovement = false;
+
     public override void _Ready()
     {
         GD.Randomize();
@@ -131,15 +136,18 @@ public class PlayerController : Spatial
         _fallCam = (ClippedCamera)GetNode("FallCamera");
         _attackSound = (AudioStreamPlayer3D)_player.GetNode("Hitbox/AttackSound");
         _collectSound = new AudioStreamPlayer();
+        _checkpointSound = GetNode<AudioStreamPlayer>("CheckPointSound");
         _collectSound.Stream = ResourceLoader.Load("res://SFX/collect.wav") as AudioStream;
         _collectSound.VolumeDb = 4F;
+        _speedSound = GetNode<AudioStreamPlayer>("SpeedPlatSound");
         _player.AddChild(_collectSound);
         _HUD = (HUD)GetNode("HUD");
         _HUD.UpdatePlayerHealth();
         Input.SetMouseMode(Input.MouseMode.Captured);
 
         _YSList = GetNode<VBoxContainer>("PauseMenu/YSFileScreen/YSFileList/List");
-        _YSNotice = GetNode<RichTextLabel>("HUD/YSCollectedMessage");
+        _YSNotice = GetNode<Label>("HUD/YSCollectedMessage");
+        _checkpointNotice = GetNode<Label>("HUD/Checkpoint");
         _stepPlayer = (AudioStreamPlayer3D)_player.GetNode("StepPlayer");
         for (int i = 0; i < _steps.Length; ++i)
         {
@@ -184,6 +192,7 @@ public class PlayerController : Spatial
     }
     public async void SpeedBoost(Vector3 direction) 
     {
+        _speedSound.Play();
         _animTree.Set("parameters/runscale/scale", 3F);
         _runSpeed = Mathf.Clamp(_runSpeed * _boostSpeed, _baseRunSpeed, _baseRunSpeed * Mathf.Pow(_boostSpeed, 3));
         _walkSpeed = Mathf.Clamp(_walkSpeed * _boostSpeed, _baseWalkSpeed, _baseWalkSpeed * Mathf.Pow(_boostSpeed, 3));
@@ -228,6 +237,16 @@ public class PlayerController : Spatial
         await ToSignal(GetTree().CreateTimer(1.7F), "timeout");
         _fadeOutNotice = true;
     }
+    public async void ShowCheckpointNotice()
+    {
+        _checkpointNotice.PercentVisible = 1F;
+        await ToSignal(GetTree().CreateTimer(1.7F), "timeout");
+        _checkpointNotice.PercentVisible = 0F;
+    }
+    public void PlayCheckpointSound()
+    {
+        _checkpointSound.Play();
+    }
     public void IncrementTopKeks()
     {
         PlayCollectSound();
@@ -236,7 +255,7 @@ public class PlayerController : Spatial
     }
     public override void _Input(InputEvent @event) 
     {
-        if (@event is InputEventMouseMotion inputmousemotion)
+        if (@event is InputEventMouseMotion inputmousemotion && !_ignoreMovement)
         {
             _camRotH -= inputmousemotion.Relative.x * _mouseSensitivity;
             _camRotV -= inputmousemotion.Relative.y * _mouseSensitivity;
@@ -336,6 +355,20 @@ public class PlayerController : Spatial
             kb.KnockBack(knock.Normalized(), 100F);
             kb.BeDamaged(20);
         }
+        if (body.IsInGroup("fwewe"))
+        {
+            Fwewe fb = body as Fwewe;
+            fb.Dialogue.Visible = true;
+            if (fb.player == null)
+                fb.player = this;
+            Input.SetMouseMode(Input.MouseMode.Visible);
+            _ignoreMovement = true;
+        }
+    }
+    public void RegainControl()
+    {
+        Input.SetMouseMode(Input.MouseMode.Captured);
+        _ignoreMovement = false;
     }
     public void _onKnockBackTimeout()
     {
@@ -368,28 +401,31 @@ public class PlayerController : Spatial
     }
     private void HandleMovement(float delta) 
     {
-        Vector3 direction = new Vector3();
+        Vector3 direction = Vector3.Zero;
         float accel = _player.IsOnFloor() ? _acceleration : _airAcceleration;
         // change movement direction and save the most recent player orientation
-        if (_speedBoostState)
+        if (!_ignoreMovement)
         {
-            direction = _speedBoostVector * 7;
-        }
-        if (Input.IsActionPressed("up")) {
-            direction -= _hor.Transform.basis.z;
-            _playerDirection = direction;
-        }
-        if (Input.IsActionPressed("down")) {
-            direction += _hor.Transform.basis.z;
-            _playerDirection = direction;
-        }
-        if (Input.IsActionPressed("left")) {
-            direction -= _hor.Transform.basis.x;
-            _playerDirection = direction;
-        }
-        if (Input.IsActionPressed("right")) {
-            direction += _hor.Transform.basis.x;
-            _playerDirection = direction;
+            if (_speedBoostState)
+            {
+                direction = _speedBoostVector * 7;
+            }
+            if (Input.IsActionPressed("up")) {
+                direction -= _hor.Transform.basis.z;
+                _playerDirection = direction;
+            }
+            if (Input.IsActionPressed("down")) {
+                direction += _hor.Transform.basis.z;
+                _playerDirection = direction;
+            }
+            if (Input.IsActionPressed("left")) {
+                direction -= _hor.Transform.basis.x;
+                _playerDirection = direction;
+            }
+            if (Input.IsActionPressed("right")) {
+                direction += _hor.Transform.basis.x;
+                _playerDirection = direction;
+            }
         }
         switch (_moveFSM._state) 
         {
@@ -479,12 +515,12 @@ public class PlayerController : Spatial
             }
         }
 
-        if (Input.IsActionJustPressed("jump") && (_moveFSM._state == "stand_idle" || _moveFSM._state == "walkrun" || _moveFSM._state == "land")) {
+        if (!_ignoreMovement && (Input.IsActionJustPressed("jump") && (_moveFSM._state == "stand_idle" || _moveFSM._state == "walkrun" || _moveFSM._state == "land"))) {
             _animTree.Set("parameters/jump/active", true);
             _moveFSM.SetState("jump");
             _stepTimer.Paused = true;
         }   
-        if (_actionFSM._state == "none" && Input.IsActionJustPressed("attack")) {
+        if (_actionFSM._state == "none" && Input.IsActionJustPressed("attack") && !_ignoreMovement) {
             _actionFSM.SetState("attack");
             _attackActive.Start();
             _hitbox.Monitoring = true;

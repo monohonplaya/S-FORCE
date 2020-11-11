@@ -29,10 +29,18 @@ public class Spikedog : KinematicBody
         _dir = new Vector3(0,0,1F);
         _vel = _dir * _speed;
         _animPlayer = (AnimationPlayer)GetNode("AnimationPlayer");
+        GD.Randomize();
     }
     public void HitReaction()
     {
         _animPlayer.Play("spikedog_jump");
+        if (GD.Randf() < 0.4F)
+        {
+            topkek tk = (topkek)GameData.TopKekScene.Instance();
+            tk.Translation = this.GlobalTransform.origin + 4 * Vector3.Up;
+            GetTree().Root.AddChild(tk);
+            tk.InitRandomDropVelocity();
+        }
     }
     public void _on_Timer_timeout()
     {

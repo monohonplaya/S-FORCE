@@ -1,0 +1,6 @@
+C:\Godot_Projects\sforcegame\.mono\temp\bin\ExportRelease\sforcegame.dll
+C:\Godot_Projects\sforcegame\.mono\temp\bin\ExportRelease\sforcegame.pdb
+C:\Godot_Projects\sforcegame\.mono\temp\obj\ExportRelease\sforcegame.csprojAssemblyReference.cache
+C:\Godot_Projects\sforcegame\.mono\temp\obj\ExportRelease\sforcegame.csproj.CoreCompileInputs.cache
+C:\Godot_Projects\sforcegame\.mono\temp\obj\ExportRelease\sforcegame.dll
+C:\Godot_Projects\sforcegame\.mono\temp\obj\ExportRelease\sforcegame.pdb

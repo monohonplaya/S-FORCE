@@ -16,7 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="sforcegame"
+config/description="by monohonplaya
+desert stage remix by SickoCat
+"
 run/main_scene="res://Levels/IntroScene.tscn"
+boot_splash/image="res://bearyrender.png"
+config/icon="res://thisisnicegame.png"
+config/macos_native_icon="res://thisisnicegame.icns"
+config/windows_native_icon="res://thisisnicegame.ico"
 
 [autoload]
 
@@ -27,8 +34,9 @@ GameData="*res://scripts/GameData.cs"
 
 window/size/width=1920
 window/size/height=1080
+window/size/borderless=true
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -82,6 +90,7 @@ pause={
 
 [rendering]
 
+threads/thread_model=2
 quality/filters/anisotropic_filter_level=2
 quality/filters/use_nearest_mipmap_filter=true
 environment/default_environment="res://default_env.tres"

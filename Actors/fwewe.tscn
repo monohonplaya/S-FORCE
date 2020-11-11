@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://glb/burytexat.material" type="Material" id=1]
+[ext_resource path="res://Fonts/StandardTextFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/NanumPenScript-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Fwewe.cs" type="Script" id=4]
+[ext_resource path="res://ModelsAndCollisions/ring_particle.tres" type="ArrayMesh" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "fwewe"
@@ -170,7 +174,38 @@ tracks/7/keys = PoolRealArray( 0, 1, 0.0283731, -0.00249195, 3.40788e-09, 9.3132
 radius = 2.43415
 height = 7.87548
 
-[node name="fwewe" type="KinematicBody"]
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.858824, 0.772549, 0.72549, 0.698039 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 80
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 2
+extra_spacing_bottom = 2
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_rotate_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+initial_velocity = 20.0
+initial_velocity_random = 0.06
+linear_accel = 11.93
+linear_accel_random = 0.11
+scale = 8.0
+
+[node name="fwewe" type="KinematicBody" groups=[
+"fwewe",
+]]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource( 4 )
 
 [node name="Fwewe" type="Spatial" parent="."]
 
@@ -229,3 +264,84 @@ anims/fwewe-idle-loop = SubResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.19331, -2.70718e-07 )
 shape = SubResource( 5 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.95
+rect_scale = Vector2( 1.00099, 1.0103 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.00167 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Panel/HBoxContainer"]
+margin_right = 872.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Oh Helo there This is Fwewe Gussimer
+Will you teleport?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+margin_left = 876.0
+margin_right = 1536.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 660.0
+margin_bottom = 133.0
+theme = SubResource( 8 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+text = "Yes"
+flat = true
+
+[node name="Button2" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer"]
+margin_top = 137.0
+margin_right = 660.0
+margin_bottom = 240.0
+theme = SubResource( 8 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+text = "No"
+flat = true
+
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+lifetime = 1.2
+one_shot = true
+speed_scale = 1.2
+process_material = SubResource( 9 )
+draw_pass_1 = ExtResource( 5 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimFinished"]
+[connection signal="pressed" from="Control/Panel/HBoxContainer/VBoxContainer/Button" to="." method="OnYesPressed"]
+[connection signal="pressed" from="Control/Panel/HBoxContainer/VBoxContainer/Button2" to="." method="OnNoPressed"]

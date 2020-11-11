@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/PlayerController.cs" type="Script" id=1]
 [ext_resource path="res://scripts/PauseMenu.cs" type="Script" id=2]
 [ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Fonts/StandardTextFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://SFX/checkpoint.wav" type="AudioStream" id=5]
+[ext_resource path="res://SFX/speedsound.wav" type="AudioStream" id=6]
 
 [node name="PlayerController" type="Spatial"]
 script = ExtResource( 1 )
@@ -156,6 +158,14 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CheckPointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -2.0
+
+[node name="SpeedPlatSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -1.0
 [connection signal="timeout" from="KnockBack" to="." method="_onKnockBackTimeout"]
 [connection signal="timeout" from="LandRecovery" to="." method="_on_LandRecovery_timeout"]
 [connection signal="timeout" from="AttackActive" to="." method="_onAttackActiveTimeout"]

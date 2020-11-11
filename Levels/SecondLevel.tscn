@@ -94,7 +94,7 @@ tracks/0/keys = {
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 266.78, -56.9763, -172.325 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -409.673, 3.50905, 5.82368 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -417.285, 3.50905, 4.85166 )
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="."]
 multimesh = SubResource( 1 )
@@ -502,6 +502,46 @@ _physicsActive = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -787.47, -103.159, 971.743 )
 _physicsActive = false
 
+[node name="topkek87" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1082.02, -103.159, 1318.87 )
+_physicsActive = false
+
+[node name="topkek88" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1092.87, -103.159, 1311.88 )
+_physicsActive = false
+
+[node name="topkek92" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1103.8, -103.159, 1305.34 )
+_physicsActive = false
+
+[node name="topkek93" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1113.66, -103.159, 1298.71 )
+_physicsActive = false
+
+[node name="topkek94" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1125.49, -103.159, 1290.91 )
+_physicsActive = false
+
+[node name="topkek95" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1513.31, -103.159, 987.957 )
+_physicsActive = false
+
+[node name="topkek96" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1503.25, -103.159, 970.932 )
+_physicsActive = false
+
+[node name="topkek97" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1492.41, -103.159, 956.615 )
+_physicsActive = false
+
+[node name="topkek98" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1484.87, -103.159, 946.555 )
+_physicsActive = false
+
+[node name="topkek99" parent="topkeks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1477.13, -103.159, 933.012 )
+_physicsActive = false
+
 [node name="topkek80" parent="topkeks" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -755.107, -103.159, 921.399 )
 _physicsActive = false
@@ -631,6 +671,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1478.41, -201.448, -1320.26 )
 
 [node name="fwewe" parent="." instance=ExtResource( 20 )]
 transform = Transform( 0.735411, 0, 0.677621, 0, 1, 0, -0.677621, 0, 0.735411, -1715.46, -217.609, -1004.79 )
+_teleportNodes = "FweweTeleportDestinations"
 
 [node name="spikenav" parent="." instance=ExtResource( 15 )]
 
@@ -665,7 +706,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2092.49, -208.787, 1.11315 )
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -902.743, -105.728, 701.031 )
 
 [node name="Spatial9" type="Spatial" parent="."]
-transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -810.095, -105.964, 753.953 )
+transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -784.251, -105.964, 770.343 )
 
 [node name="Spatial5" parent="Spatial9" instance=ExtResource( 22 )]
 
@@ -695,6 +736,9 @@ transform = Transform( -0.535591, 0, -0.844477, 0, 1, 0, 0.844477, 0, -0.535591,
 [node name="speedplatform2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -1529.58, -104.158, 1010.27 )
 
+[node name="speedplatform8" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1048.27, -104.158, 1341 )
+
 [node name="speedplatform6" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477, -728.012, -104.158, 875.419 )
 
@@ -709,6 +753,12 @@ transform = Transform( -0.535591, 0, -0.844477, 0, 1, 0, 0.844477, 0, -0.535591,
 
 [node name="speedplatform5" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1224.06, -12.434, 1157.13 )
+
+[node name="speedplatform9" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477, -787.51, -12.434, 874.59 )
+
+[node name="speedplatform10" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1081.06, 78.7208, 1180.68 )
 
 [node name="savepoint4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -1217.74, -104.772, 502.646 )
@@ -751,6 +801,10 @@ text = "ilu cutie, pls respong "
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -954.941, -192.456, -101.257 )
 text = "are you a griller saying this? >___< "
 
+[node name="ysfile11" parent="YSFiles" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1120.86, 240.58, 936.663 )
+text = "i love it when the anine tells me what to do while drinking le orange juice "
+
 [node name="ysfile10" parent="YSFiles" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 249.538, -55.0578, -453.477 )
 text = "dont bully me or my friends "
@@ -768,6 +822,17 @@ transform = Transform( 0.925249, 0, 0.379359, 0, 1, 0, -0.379359, 0, 0.925249, -
 
 [node name="Spatial2" parent="Spikebars" instance=ExtResource( 22 )]
 transform = Transform( 0.91292, 0, 0.408139, 0, 1, 0, -0.408139, 0, 0.91292, -37.1751, -70.3798, -643.782 )
+
+[node name="FweweTeleportDestinations" type="Spatial" parent="."]
+
+[node name="Spatial5" type="Spatial" parent="FweweTeleportDestinations"]
+transform = Transform( 0.735411, 0, 0.677621, 0, 1, 0, -0.677621, 0, 0.735411, -1715.46, -217.609, -1004.79 )
+
+[node name="Spatial6" type="Spatial" parent="FweweTeleportDestinations"]
+transform = Transform( 0.735411, 0, 0.677621, 0, 1, 0, -0.677621, 0, 0.735411, -2084.32, -201.228, -78.2054 )
+
+[node name="Spatial7" type="Spatial" parent="FweweTeleportDestinations"]
+transform = Transform( 0.735411, 0, 0.677621, 0, 1, 0, -0.677621, 0, 0.735411, -1351.2, -213.253, 391.072 )
 [connection signal="body_entered" from="FallDeathBox" to="FallDeathBox" method="_onFallDeathBoxBodyEntered"]
 
 [editable path="Level2"]

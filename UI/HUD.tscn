@@ -75,20 +75,30 @@ texture_under = ExtResource( 5 )
 texture_over = ExtResource( 4 )
 texture_progress = ExtResource( 6 )
 
-[node name="YSCollectedMessage" type="RichTextLabel" parent="."]
-anchor_left = 0.7
-anchor_top = 0.889
+[node name="YSCollectedMessage" type="Label" parent="."]
+anchor_left = 0.587
+anchor_top = 0.833
 anchor_right = 0.967
 anchor_bottom = 0.948
-margin_left = -0.00012207
-margin_top = -0.120056
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 7 )
-visible_characters = 0
-percent_visible = 0.0
+custom_fonts/font = ExtResource( 7 )
 text = "YSFile Collected!"
-scroll_active = false
+align = 2
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Checkpoint" type="Label" parent="."]
+anchor_left = 0.2
+anchor_top = 0.9
+anchor_right = 0.8
+anchor_bottom = 0.98
+custom_fonts/font = ExtResource( 7 )
+text = "Checkpoint Activated"
+align = 1
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
