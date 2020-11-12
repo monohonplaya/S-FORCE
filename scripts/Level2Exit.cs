@@ -28,8 +28,8 @@ public class Level2Exit : Spatial
         _YSFiles.Text = GameData.CollectedYSSet.Count.ToString() + "/" + GameData.YSFiles.Count.ToString() + " [x1000pts]";
         ulong minutes = (GameData.ElapsedTime / 1000UL) / 60UL;
         ulong seconds = (GameData.ElapsedTime / 1000UL) % 60UL;
-        _Time.Text = String.Format("{0:D2}:{1:D2}", minutes, seconds) + " [x" + 30F * 60F / (float)seconds + "]";
-        _FinalScore.Text = ((ulong)(((ulong)GameData.CollectedTopKek * 100UL + (ulong)GameData.CollectedYSSet.Count * 1000UL) * (30F * 60F / (float)seconds))).ToString();
+        _Time.Text = String.Format("{0}:{1:D2}", minutes, seconds) + " [x" + 30F * 60F / (float)seconds + "]";
+        _FinalScore.Text = ((ulong)(((ulong)GameData.CollectedTopKek * 100UL + (ulong)GameData.CollectedYSSet.Count * 1000UL) * (30F * 60F / (float)(GameData.ElapsedTime / 1000UL)))).ToString();
         _scorescreen.Visible = true;
     }
     public void OnMainMenuPressed()
