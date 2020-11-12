@@ -23,6 +23,7 @@ public class PauseMenu : Control
             GetTree().Paused = !GetTree().Paused;
             if (GetTree().Paused)
             {
+                GameData.StopTimer();
                 Input.SetMouseMode(Input.MouseMode.Visible);
                 Show();
             }
@@ -32,6 +33,7 @@ public class PauseMenu : Control
                 _YSFileScreen.Visible = false;
                 Input.SetMouseMode(Input.MouseMode.Captured);
                 Hide();
+                GameData.StartTimer();
             }
         }
     }
@@ -40,6 +42,7 @@ public class PauseMenu : Control
         GetTree().Paused = !GetTree().Paused;
         Input.SetMouseMode(Input.MouseMode.Captured);
         Hide();
+        GameData.StartTimer();
     }
     public void onYSFilePressed()
     {

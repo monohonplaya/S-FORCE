@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://ModelsAndCollisions/Level2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/PlayerController.tscn" type="PackedScene" id=2]
@@ -29,6 +29,11 @@
 [ext_resource path="res://Props/umarucube.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Props/longwall.tscn" type="PackedScene" id=28]
 [ext_resource path="res://glb/texat.material" type="Material" id=29]
+[ext_resource path="res://Props/spikybar.tscn" type="PackedScene" id=30]
+[ext_resource path="res://ModelsAndCollisions/ring_particle.tres" type="ArrayMesh" id=31]
+[ext_resource path="res://ModelsAndCollisions/heart_particle.tres" type="ArrayMesh" id=32]
+[ext_resource path="res://scripts/Level2Exit.cs" type="Script" id=33]
+[ext_resource path="res://Fonts/StandardTextFont.tres" type="DynamicFont" id=34]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "cactus"
@@ -45,7 +50,7 @@ surfaces/0 = {
 "vertex_count": 180
 }
 
-[sub_resource type="MultiMesh" id=9]
+[sub_resource type="MultiMesh" id=2]
 transform_format = 1
 instance_count = 7777
 mesh = SubResource( 1 )
@@ -107,6 +112,64 @@ tracks/0/keys = {
 "values": [ Vector3( -906.656, -105.964, 723.026 ), Vector3( -992.933, -105.964, 661.219 ), Vector3( -906.656, -105.964, 723.026 ) ]
 }
 
+[sub_resource type="SphereShape" id=9]
+radius = 12.9135
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -4.65233, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+lifetime_randomness = 0.22
+emission_shape = 1
+emission_sphere_radius = 8.0
+flag_rotate_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 32.61
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 8.0
+angular_velocity = 4.0
+angular_velocity_random = 0.63
+linear_accel = 1.0
+tangential_accel = 1.0
+scale_random = 0.57
+scale_curve = SubResource( 11 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="Curve" id=13]
+max_value = 8.0
+_data = [ Vector2( 0, 4.79694 ), 0.0, 0.0, 0, 0, Vector2( 0.506421, 7.57088 ), 0.0, 0.0, 0, 0, Vector2( 1, 3.70881 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+trail_divisor = 2
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_rotate_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 3.1
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 6.56
+initial_velocity_random = 0.16
+angular_velocity = 2.0
+angular_velocity_random = 0.04
+linear_accel = 2.0
+linear_accel_random = 0.03
+tangential_accel = 1.0
+angle = 0.1
+angle_random = 0.23
+scale_curve = SubResource( 14 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0470588, 0.0352941, 0.0784314, 0.921569 )
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Level2" parent="." instance=ExtResource( 1 )]
@@ -122,10 +185,10 @@ visible = false
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 266.78, -56.9763, -172.325 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -407.913, 3.50905, 5.52197 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -408.873, 4.54845, 5.21197 )
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="."]
-multimesh = SubResource( 9 )
+multimesh = SubResource( 2 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
@@ -709,7 +772,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2093.21, -205.461, -0.49028 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1680.39, -211.87, -946.681 )
 
 [node name="savepoint3" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1185.93, 239.061, 889.744 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1042.68, 74.3927, 1204.39 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
@@ -836,11 +899,20 @@ transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477,
 [node name="speedplatform10" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1081.06, 78.7208, 1180.68 )
 
+[node name="speedplatform15" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1235.05, 78.7208, 1079.1 )
+
 [node name="savepoint4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -1217.74, -104.772, 502.646 )
 
 [node name="savepoint5" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -1218.09, -14.5175, 562.244 )
+
+[node name="Spatial13" parent="." instance=ExtResource( 23 )]
+transform = Transform( 0.5, 3.67538e-08, 0.866025, 0, 1, -4.24396e-08, -0.866025, 2.12198e-08, 0.5, -1301.27, 85.033, 1044.09 )
+
+[node name="Spatial14" parent="." instance=ExtResource( 23 )]
+transform = Transform( 0.5, 3.67538e-08, 0.866025, 0, 1, -4.24396e-08, -0.866025, 2.12198e-08, 0.5, -1294.65, 85.033, 1032.64 )
 
 [node name="YSFiles" type="Spatial" parent="."]
 
@@ -881,7 +953,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -954.941, -197.289, -101.257 )
 text = "are you a griller saying this? >___< "
 
 [node name="ysfile11" parent="YSFiles" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1120.86, 240.58, 936.663 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1165.12, 240.58, 903.011 )
 text = "i love it when the anine tells me what to do while drinking le orange juice "
 
 [node name="ysfile10" parent="YSFiles" instance=ExtResource( 21 )]
@@ -927,7 +999,217 @@ transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1497.31, -
 
 [node name="cactus" parent="." instance=ExtResource( 3 )]
 visible = false
+
+[node name="spikybar" parent="." instance=ExtResource( 30 )]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1199.87, 77.3573, 1112.46 )
+
+[node name="spikybar2" parent="." instance=ExtResource( 30 )]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1191.73, 77.3573, 1098.16 )
+
+[node name="spikybar3" parent="." instance=ExtResource( 30 )]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1215.4, 77.3573, 1084.5 )
+
+[node name="spikybar4" parent="." instance=ExtResource( 30 )]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1223.25, 77.3573, 1098.03 )
+
+[node name="ExitPortal" type="Spatial" parent="."]
+script = ExtResource( 33 )
+
+[node name="Area" type="Area" parent="ExitPortal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1123.45, 241.134, 930.93 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="ExitPortal/Area"]
+shape = SubResource( 9 )
+
+[node name="Particles2" type="Particles" parent="ExitPortal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1123.45, 244.703, 930.93 )
+amount = 28
+lifetime = 6.0
+explosiveness = 0.2
+process_material = SubResource( 12 )
+draw_pass_1 = ExtResource( 32 )
+
+[node name="SpotLight" type="SpotLight" parent="ExitPortal"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1123.45, 266.24, 930.93 )
+light_energy = 2.1
+light_indirect_energy = 2.4
+light_negative = true
+spot_range = 61.0
+spot_attenuation = 0.000191549
+spot_angle = 43.4
+spot_angle_attenuation = 23.4253
+
+[node name="Particles" type="Particles" parent="ExitPortal"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1123.45, 239.327, 930.93 )
+lifetime = 4.0
+process_material = SubResource( 15 )
+draw_pass_1 = ExtResource( 31 )
+
+[node name="Control" type="Control" parent="ExitPortal"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ExitPortal/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExitPortal/Control/Panel"]
+anchor_left = 0.25
+anchor_top = 0.2
+anchor_right = 0.75
+anchor_bottom = 0.8
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ExitPortal/Control/Panel/VBoxContainer"]
+margin_right = 960.0
+margin_bottom = 561.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer"]
+margin_right = 478.0
+margin_bottom = 561.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 478.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "Topkeks:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 141.0
+margin_right = 478.0
+margin_bottom = 278.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "YSFiles:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 282.0
+margin_right = 478.0
+margin_bottom = 419.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "Time:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 423.0
+margin_right = 478.0
+margin_bottom = 561.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "Final Score:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 482.0
+margin_right = 960.0
+margin_bottom = 561.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Topkeks" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 478.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "fdsafdsa"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSFiles" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 141.0
+margin_right = 478.0
+margin_bottom = 278.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "fdsafdsa"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 282.0
+margin_right = 478.0
+margin_bottom = 419.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "fdsafdsa"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinalScore" type="Label" parent="ExitPortal/Control/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 423.0
+margin_right = 478.0
+margin_bottom = 561.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 34 )
+text = "fdsafdsa"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ExitPortal/Control/Panel/VBoxContainer"]
+margin_top = 565.0
+margin_right = 960.0
+margin_bottom = 648.0
+custom_fonts/font = ExtResource( 34 )
+custom_colors/font_color_hover = Color( 0.317647, 0.541176, 1, 1 )
+text = "Main Menu"
+flat = true
 [connection signal="body_entered" from="FallDeathBox" to="FallDeathBox" method="_onFallDeathBoxBodyEntered"]
+[connection signal="body_entered" from="ExitPortal/Area" to="ExitPortal" method="OnPlayerEntered"]
+[connection signal="pressed" from="ExitPortal/Control/Panel/VBoxContainer/Button" to="ExitPortal" method="OnMainMenuPressed"]
 
 [editable path="Level2"]
 

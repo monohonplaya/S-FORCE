@@ -167,6 +167,7 @@ public class PlayerController : Spatial
         _actionFSM.AddState("cooldown");
         _actionFSM.AddState("none");
         _actionFSM.SetState("none");
+        GameData.StartTimer();
     }
     private void _playRandomStepSound()
     {

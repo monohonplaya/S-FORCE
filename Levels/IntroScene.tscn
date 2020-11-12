@@ -71,14 +71,6 @@ scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
 [sub_resource type="GIProbeData" id=8]
-bounds = AABB( -49.213, -18.474, -64.6655, 98.426, 36.948, 129.331 )
-cell_size = 1.0104
-to_cell_xform = Transform( 0.989709, 0, 0, 0, 0.989709, 0, 0, 0, 0.989709, 48.7066, 18.2839, 64 )
-dynamic_data = PoolIntArray( 0, 8, 128, 64, 128, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 10, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
-dynamic_range = 4
-bias = 1.5
-normal_bias = 0.0
-propagation = 0.7
 
 [sub_resource type="DynamicFont" id=9]
 size = 50

@@ -27,14 +27,12 @@ config/windows_native_icon="res://thisisnicegame.ico"
 
 [autoload]
 
-Screen="*res://scripts/Screen.gd"
 GameData="*res://scripts/GameData.cs"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -90,6 +88,7 @@ pause={
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
 threads/thread_model=2
 quality/filters/anisotropic_filter_level=2
 quality/filters/use_nearest_mipmap_filter=true

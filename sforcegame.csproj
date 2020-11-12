@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="scripts\Fwewe.cs" />
+    <Compile Include="scripts\Level2Exit.cs" />
     <Compile Include="scripts\PathIncrement.cs" />
     <Compile Include="scripts\CharacterSelect.cs" />
     <Compile Include="scripts\Goal.cs" />

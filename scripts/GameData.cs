@@ -18,7 +18,9 @@ public class GameData : Node
     public static List<String> YSFiles = new List<String>();
     public static HashSet<int> CollectedYSSet = new HashSet<int>();
     public static PackedScene TopKekScene;
-
+    public static ulong ElapsedTime = 0;
+    public static ulong TimerStartTime = 0;
+    public static bool TimerRunning = false;
     public override void _Ready()
     {
         TopKekScene = (PackedScene)ResourceLoader.Load("res://Props/topkek.tscn");
@@ -29,5 +31,25 @@ public class GameData : Node
         YSFiles = new List<String>();
         CollectedYSSet = new HashSet<int>();
         PlayerHealth = 100;
+        ElapsedTime = 0;
+        TimerRunning = false;
     }
+    public static void StartTimer()
+    {
+        if (!TimerRunning)
+        {
+            TimerStartTime = OS.GetTicksMsec();
+            TimerRunning = true;
+        }
+    }
+    public static void StopTimer()
+    {
+        if (TimerRunning)
+        {
+            ElapsedTime += OS.GetTicksMsec() - TimerStartTime;
+            TimerRunning = false;
+        }
+            
+    }
+
 }
