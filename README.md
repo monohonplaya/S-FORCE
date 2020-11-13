@@ -6,3 +6,6 @@ I will probably never finish this so I'll leave this here with some notes.
 - If you try to view Spikedog's animation player or make any changes there, the mesh will get messed up, but just go back to the mesh (spikedog > Armature004 > Skeleton > spikedog) and reset the rotation and scale to fix it.
 - The 3D models are available in the glb directory as glb files.
 - The code is generally messy idk glhf
+
+# Game Download
+https://monohonplaya.itch.io/s-force
