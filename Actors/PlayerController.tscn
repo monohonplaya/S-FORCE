@@ -100,10 +100,20 @@ custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "YS Files"
 flat = true
 
-[node name="Button2" type="Button" parent="PauseMenu/Menu"]
+[node name="Button5" type="Button" parent="PauseMenu/Menu"]
 margin_top = 174.0
 margin_right = 424.0
 margin_bottom = 257.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Toggle Fullscreen"
+flat = true
+
+[node name="Button2" type="Button" parent="PauseMenu/Menu"]
+margin_top = 261.0
+margin_right = 424.0
+margin_bottom = 344.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -111,9 +121,9 @@ text = "Main Menu"
 flat = true
 
 [node name="Button3" type="Button" parent="PauseMenu/Menu"]
-margin_top = 261.0
+margin_top = 348.0
 margin_right = 424.0
-margin_bottom = 344.0
+margin_bottom = 431.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -174,6 +184,7 @@ volume_db = -1.0
 [connection signal="timeout" from="StepTimer" to="." method="_onStepTimerTimeout"]
 [connection signal="pressed" from="PauseMenu/Menu/Button" to="PauseMenu" method="onUnpausePressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Button4" to="PauseMenu" method="onYSFilePressed"]
+[connection signal="pressed" from="PauseMenu/Menu/Button5" to="PauseMenu" method="OnFullscreenTogglePressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Button2" to="PauseMenu" method="onMainMenuPressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Button3" to="PauseMenu" method="onQuitPressed"]
 [connection signal="pressed" from="PauseMenu/YSFileScreen/Back" to="PauseMenu" method="onBackPressed"]

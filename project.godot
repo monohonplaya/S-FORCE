@@ -17,10 +17,11 @@ _global_script_class_icons={
 
 config/name="sforcegame"
 config/description="by monohonplaya
-desert stage remix by SickoCat
+dusk stage remix by SickoCat
 "
 run/main_scene="res://Levels/IntroScene.tscn"
 boot_splash/image="res://bearyrender.png"
+boot_splash/bg_color=Color( 0.333333, 0.235294, 0.337255, 1 )
 config/icon="res://thisisnicegame.png"
 config/macos_native_icon="res://thisisnicegame.icns"
 config/windows_native_icon="res://thisisnicegame.ico"
@@ -33,7 +34,6 @@ GameData="*res://scripts/GameData.cs"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

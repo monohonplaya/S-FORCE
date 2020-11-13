@@ -92,6 +92,10 @@ public class PauseMenu : Control
         _menu.Visible = false;
         _YSFileScreen.Visible = true;
     }
+    public void OnFullscreenTogglePressed()
+    {
+        OS.WindowFullscreen = !OS.WindowFullscreen;
+    }
     public void onMainMenuPressed()
     {
         GetTree().Paused = !GetTree().Paused;

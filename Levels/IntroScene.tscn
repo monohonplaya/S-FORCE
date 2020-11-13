@@ -79,23 +79,6 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=10]
-size = 200
-font_data = ExtResource( 11 )
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="DynamicFont" id=12]
-size = 48
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_mipmaps = true
-font_data = ExtResource( 9 )
-
-[sub_resource type="StyleBoxEmpty" id=13]
-
-[sub_resource type="StyleBoxEmpty" id=14]
-
 [sub_resource type="ArrayMesh" id=15]
 surfaces/0 = {
 "aabb": AABB( -5.4588, -1, -16.4563, 10.9176, 30.2726, 32.9127 ),
@@ -503,6 +486,23 @@ tracks/0/keys = {
 "values": [ Vector3( 0, -1.59, 0 ), Vector3( 0, -1.7, 0 ), Vector3( 0, -1.7, 0 ), Vector3( 0, -1.59, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=10]
+size = 200
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+size = 48
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.1198 )
 script = ExtResource( 12 )
@@ -614,64 +614,6 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Label" type="Label" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -768.0
-margin_right = -36.0
-margin_bottom = 235.0
-custom_fonts/font = SubResource( 10 )
-text = "S FORCE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 48.0
-margin_top = -216.0
-margin_right = 264.0
-margin_bottom = -40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Campaign" type="Button" parent="VBoxContainer"]
-margin_right = 216.0
-margin_bottom = 63.0
-focus_mode = 0
-custom_styles/focus = SubResource( 11 )
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color_hover = Color( 0.509804, 0.486275, 1, 1 )
-custom_colors/font_color_pressed = Color( 0.772549, 0.627451, 0.627451, 1 )
-enabled_focus_mode = 0
-text = "Campaign"
-flat = true
-align = 0
-
-[node name="Multiplayer" type="Button" parent="VBoxContainer"]
-margin_top = 67.0
-margin_right = 216.0
-margin_bottom = 130.0
-custom_styles/focus = SubResource( 13 )
-custom_fonts/font = SubResource( 12 )
-disabled = true
-enabled_focus_mode = 0
-text = "Multiplayer"
-flat = true
-align = 0
-
-[node name="Credits" type="Button" parent="VBoxContainer"]
-margin_top = 134.0
-margin_right = 216.0
-margin_bottom = 197.0
-custom_styles/focus = SubResource( 14 )
-custom_fonts/font = SubResource( 12 )
-text = "Credits"
-flat = true
-align = 0
 
 [node name="introscenelevel" parent="." instance=ExtResource( 1 )]
 
@@ -785,8 +727,86 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="VBoxContainer/Campaign" to="." method="_onCampaignPressed"]
-[connection signal="pressed" from="VBoxContainer/Credits" to="." method="OnCreditsPressed"]
+
+[node name="Control2" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control2"]
+anchor_left = 0.606
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.228
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 10 )
+text = "S FORCE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2"]
+anchor_left = 0.01
+anchor_top = 0.75
+anchor_right = 0.3
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Campaign" type="Button" parent="Control2/VBoxContainer"]
+margin_right = 556.0
+margin_bottom = 63.0
+focus_mode = 0
+custom_styles/focus = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color_hover = Color( 0.509804, 0.486275, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.772549, 0.627451, 0.627451, 1 )
+enabled_focus_mode = 0
+text = "Campaign"
+flat = true
+align = 0
+
+[node name="Multiplayer" type="Button" parent="Control2/VBoxContainer"]
+margin_top = 67.0
+margin_right = 556.0
+margin_bottom = 130.0
+custom_styles/focus = SubResource( 13 )
+custom_fonts/font = SubResource( 12 )
+disabled = true
+enabled_focus_mode = 0
+text = "Multiplayer"
+flat = true
+align = 0
+
+[node name="Credits" type="Button" parent="Control2/VBoxContainer"]
+margin_top = 134.0
+margin_right = 556.0
+margin_bottom = 197.0
+custom_styles/focus = SubResource( 14 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color_hover = Color( 0.0627451, 1, 0, 1 )
+text = "Credits"
+flat = true
+align = 0
+
+[node name="FullscreenToggle" type="Button" parent="Control2/VBoxContainer"]
+margin_top = 201.0
+margin_right = 556.0
+margin_bottom = 264.0
+custom_styles/focus = SubResource( 14 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color_hover = Color( 0.12549, 0.133333, 0.470588, 1 )
+text = "Toggle Fullscreen"
+flat = true
+align = 0
+[connection signal="pressed" from="Control2/VBoxContainer/Campaign" to="." method="_onCampaignPressed"]
+[connection signal="pressed" from="Control2/VBoxContainer/Credits" to="." method="OnCreditsPressed"]
+[connection signal="pressed" from="Control2/VBoxContainer/FullscreenToggle" to="." method="OnFullscreenTogglePressed"]
 
 [editable path="Models/bearyebil"]
 

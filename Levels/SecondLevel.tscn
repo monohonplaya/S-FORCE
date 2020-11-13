@@ -866,6 +866,9 @@ transform = Transform( 0.844477, 0, -0.535591, 0, 1, 0, 0.535591, 0, 0.844477, -
 [node name="speedplatform8" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.535591, 0, 0.844477, 0, 1, 0, -0.844477, 0, 0.535591, -1048.27, -104.158, 1341 )
 
+[node name="speedplatform16" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.55789, 0, 0.829914, 0, 1, 0, -0.829914, 0, 0.55789, -1174.75, -104.158, 1260.71 )
+
 [node name="speedplatform6" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.844477, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844477, -728.012, -104.158, 875.419 )
 

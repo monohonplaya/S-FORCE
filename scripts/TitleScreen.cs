@@ -17,4 +17,8 @@ public class TitleScreen : Spatial
     {
         _credits.Visible = !_credits.Visible;
     }
+    public void OnFullscreenTogglePressed()
+    {
+        OS.WindowFullscreen = !OS.WindowFullscreen;
+    }
 }
