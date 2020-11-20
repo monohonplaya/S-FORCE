@@ -1962,7 +1962,7 @@ nodes/runscale/node = SubResource( 39 )
 nodes/runscale/position = Vector2( 416, 400 )
 nodes/squished/node = SubResource( 40 )
 nodes/squished/position = Vector2( 1984, 336 )
-node_connections = [ "output", 0, "squished", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "runscale", 0, "Animation 3", "air", 0, "land", "air", 1, "Animation 6", "TimeScale", 0, "Animation 2", "TimeScale 3", 0, "Animation 5", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "attack", 0, "air", "attack", 1, "Animation 4" ]
+node_connections = [ "output", 0, "squished", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "attack", 0, "air", "attack", 1, "Animation 4", "TimeScale 3", 0, "Animation 5", "TimeScale", 0, "Animation 2", "air", 0, "land", "air", 1, "Animation 6", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "runscale", 0, "Animation 3" ]
 
 [node name="bearyebil" type="KinematicBody"]
 collision_layer = 2147483650
@@ -2078,7 +2078,7 @@ skin = SubResource( 2 )
 material/0 = null
 
 [node name="HatAttach" type="BoneAttachment" parent="mesh/Skeleton"]
-transform = Transform( 0.999999, 0.000184729, -0.0017063, -0.000631441, 0.964058, -0.265693, 0.00159589, 0.265693, 0.964056, -2.42927e-11, 3.97878, 1.2383 )
+transform = Transform( 0.999999, 0.000184729, -0.0017063, -0.000629819, 0.964327, -0.264713, 0.00159653, 0.264713, 0.964326, -2.42927e-11, 3.98004, 1.23604 )
 bone_name = "head"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

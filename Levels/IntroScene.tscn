@@ -571,7 +571,7 @@ autoplay = true
 transform = Transform( 0.465467, 0.0192113, 0.181581, -0.0178977, 0.499631, -0.00698198, -0.181715, 3.11993e-08, 0.465811, -3.46994, 2.4243, -3.80511 )
 
 [node name="HatAttach" parent="bearypink/Armature/Skeleton" index="1"]
-transform = Transform( 0.987096, -0.00207493, -0.160113, 6.66559e-05, 0.999921, -0.0125472, 0.160126, 0.0123746, 0.987019, 0, 4.2807, 0.0676471 )
+transform = Transform( 0.996089, -0.000176443, 0.0883522, 0.000924664, 0.999964, -0.00842776, -0.0883476, 0.0084765, 0.996054, 0, 4.28815, 0.045231 )
 
 [node name="AnimationTree" parent="bearypink" index="2"]
 parameters/iwr_blend/blend_amount = -1.0

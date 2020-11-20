@@ -81,6 +81,8 @@ public class PlayerController : Spatial
     private Label _checkpointNotice;
     private bool _fadeOutNotice = false;
     private bool _ignoreMovement = false;
+    private bool _isAttacking = false;
+    private bool _didHit = false;
     private BoneAttachment _hatAttach;
     public override void _Ready()
     {
@@ -105,7 +107,7 @@ public class PlayerController : Spatial
 
         // _player = (KinematicBody)GetNode("bearypink");
         _hitbox = (Area)_player.GetNode("Hitbox");
-        _hitbox.Monitoring = false;
+        _hitbox.Monitoring = true;
         _playerDirection = _player.Rotation;
         _hitbox.Connect("body_entered", this, nameof(_onHitboxBodyEntered));
 
@@ -140,7 +142,7 @@ public class PlayerController : Spatial
             
         _landRecoveryTimer = (Timer)GetNode("LandRecovery");
         _knockBackTimer = (Timer)GetNode("KnockBack");
-        _attackActive = (Timer)GetNode("AttackActive");
+        _attackActive = GetNode<Timer>("AttackActive");
         _attackCooldown = (Timer)GetNode("AttackCooldown");
         _fallTimer = (Timer)GetNode("FallTimer");
         _stepTimer = (Timer)GetNode("StepTimer");
@@ -231,7 +233,7 @@ public class PlayerController : Spatial
         _speedBoostVector = Vector3.Zero;
         _stepTimer.WaitTime = .4F;
         _animTree.Set("parameters/runscale/scale", 1.35F);
-    }
+    }/* 
     public override void _Process(float delta) 
     {
         // if (Input.IsActionJustPressed("ui_cancel")){
@@ -244,7 +246,7 @@ public class PlayerController : Spatial
         //         Input.SetMouseMode(Input.MouseMode.Visible);
         //     }
         // }
-    }
+    } */
     public void PlayCollectSound()
     {
         _collectSound.Play();
@@ -362,27 +364,30 @@ public class PlayerController : Spatial
     }
     public void _onHitboxBodyEntered(Node body)
     {
-        if (body.IsInGroup("spikedog"))
+        /* if (_isAttacking)
         {
-            Spikedog sd = body as Spikedog;
-            sd.HitReaction();
-        }
-        if (body.IsInGroup("spikeman"))
-        {
-            spikeman kb = body as spikeman;
-            Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
-            kb.KnockBack(knock.Normalized(), 100F);
-            kb.BeDamaged(20);
-        }
-        if (body.IsInGroup("fwewe"))
-        {
-            Fwewe fb = body as Fwewe;
-            fb.Dialogue.Visible = true;
-            if (fb.player == null)
-                fb.player = this;
-            Input.SetMouseMode(Input.MouseMode.Visible);
-            _ignoreMovement = true;
-        }
+            if (body.IsInGroup("spikedog"))
+            {
+                Spikedog sd = body as Spikedog;
+                sd.HitReaction();
+            }
+            if (body.IsInGroup("spikeman"))
+            {
+                spikeman kb = body as spikeman;
+                Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
+                kb.KnockBack(knock.Normalized(), 100F);
+                kb.BeDamaged(20);
+            }
+            if (body.IsInGroup("fwewe"))
+            {
+                Fwewe fb = body as Fwewe;
+                fb.Dialogue.Visible = true;
+                if (fb.player == null)
+                    fb.player = this;
+                Input.SetMouseMode(Input.MouseMode.Visible);
+                _ignoreMovement = true;
+            }
+        } */
     }
     public void RegainControl()
     {
@@ -396,7 +401,9 @@ public class PlayerController : Spatial
     }
     public void _onAttackActiveTimeout()
     {
-        _hitbox.Monitoring = false;
+        //_hitbox.Monitoring = false;
+        _isAttacking = false;
+        _didHit = false;
         _actionFSM.SetState("cooldown");
         _attackCooldown.Start();
     }
@@ -541,6 +548,7 @@ public class PlayerController : Spatial
             _stepTimer.Paused = true;
         }   
         if (_actionFSM._state == "none" && Input.IsActionJustPressed("attack") && !_ignoreMovement) {
+            _isAttacking = true;
             _actionFSM.SetState("attack");
             _attackActive.Start();
             _hitbox.Monitoring = true;
@@ -549,18 +557,33 @@ public class PlayerController : Spatial
             _partic1.Restart();
             _partic2.Restart();
         }
-        if (_hitbox.Monitoring == true)
+        if (_isAttacking && !_didHit)
         {
-            // I don't know how to do collisions of still bodies in Godot
-            // this seems to increase the chance of the hitbox collision, but not always.
             foreach(Node body in _hitbox.GetOverlappingBodies())
             {
                 if (body.IsInGroup("spikedog"))
                 {
                     Spikedog sd = body as Spikedog;
                     sd.HitReaction();
-                    _hitbox.Monitoring = false;
-                    break;
+                    _didHit = true;
+                }
+                if (body.IsInGroup("spikeman"))
+                {
+                    spikeman kb = body as spikeman;
+                    Vector3 knock = ((kb.GlobalTransform.origin - _hitbox.GlobalTransform.origin).Normalized() + _playerDirection.Normalized());
+                    kb.KnockBack(knock.Normalized(), 100F);
+                    kb.BeDamaged(20);
+                    _didHit = true;
+                }
+                if (body.IsInGroup("fwewe"))
+                {
+                    Fwewe fb = body as Fwewe;
+                    fb.Dialogue.Visible = true;
+                    if (fb.player == null)
+                        fb.player = this;
+                    Input.SetMouseMode(Input.MouseMode.Visible);
+                    _ignoreMovement = true;
+                    _didHit = true;
                 }
             }
         }

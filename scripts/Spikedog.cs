@@ -41,6 +41,7 @@ public class Spikedog : KinematicBody
             GetTree().Root.AddChild(tk);
             tk.InitRandomDropVelocity();
         }
+        
     }
     public void _on_Timer_timeout()
     {
