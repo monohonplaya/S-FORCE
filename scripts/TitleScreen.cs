@@ -38,6 +38,7 @@ public class TitleScreen : Spatial
 	{
 		GetTree().ChangeScene("Levels/CharacterSelect.tscn");
 		GameData.ResetForNewGame();
+		GameData.SaveData();
 	}
 	public void OnHatsPressed()
 	{
