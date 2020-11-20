@@ -10,7 +10,7 @@ colors = PoolColorArray( 0.985303, 1, 0.796624, 1, 1, 0, 0, 1 )
 gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0.00156904, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.307008, 0.965517 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.1341 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0.00156904, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.309317, 0.946245 ), -0.0749365, -0.0749365, 0, 0, Vector2( 0.624845, 0.822448 ), -0.925819, -0.925819, 0, 0, Vector2( 1, 0.1341 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
@@ -39,7 +39,7 @@ colors = PoolColorArray( 0.332031, 0.0755344, 0.0755344, 1, 0.596322, 0.642198, 
 gradient = SubResource( 6 )
 
 [sub_resource type="Curve" id=8]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.39069, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.30559, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.621118, 0.819784 ), -0.836798, -0.836798, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=9]
 curve = SubResource( 8 )
@@ -62,14 +62,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.44983, 0 )
 
 [node name="Flames" type="Particles" parent="."]
 transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
-amount = 64
+amount = 48
 process_material = SubResource( 5 )
 draw_pass_1 = ExtResource( 2 )
 
 [node name="Smoke" type="Particles" parent="."]
 transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
-amount = 64
+amount = 28
 lifetime = 2.0
+speed_scale = 0.7
 visibility_aabb = AABB( -6.0637, -4.54035, -3.4573, 12.1274, 9.0807, 6.91459 )
 process_material = SubResource( 10 )
 draw_pass_1 = ExtResource( 1 )

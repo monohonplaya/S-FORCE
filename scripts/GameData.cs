@@ -75,18 +75,37 @@ public class GameData : Node
 		{
 			data += k + "=" + dict[k].ToString() + "\n";
 		}
+		data += "HatSelection=" + SelectedHat.ToString() + "\n";
 		return data;
 	}
 	private static Dictionary<string, bool> Decode(String data)
 	{
 		Dictionary<string, bool> ret = new Dictionary<string, bool>();
 		string[] tmp = data.Split('\n');
-		GD.Print(tmp);
+		//GD.Print(tmp);
 		foreach(string s in tmp)
 		{
 			string[] kvpair = s.Split('=');
 			if (kvpair.Length > 1)
+			{
+				if (kvpair[0].Equals("HatSelection"))
+				{
+					switch (kvpair[1])
+					{
+						case "None":
+							SelectedHat = Hat.None;
+							break;
+						case "SForceCap":
+							SelectedHat = Hat.SForceCap;
+							break;
+						case "PirateHat":
+							SelectedHat = Hat.PirateHat;
+							break;
+					}
+					continue;
+				}
 				ret.Add(kvpair[0], kvpair[1] == "True" ? true : false);
+			}
 		}
 		return ret;
 	}
@@ -103,7 +122,7 @@ public class GameData : Node
 			save.StoreLine(data);
 			save.Close();
 		}
-		GD.Print(data);
+		//GD.Print(data);
 
 	}
 	public static void LoadData()
@@ -116,7 +135,7 @@ public class GameData : Node
 		else
 		{
 			string text = save.GetAsText();
-			GD.Print(text);
+			//GD.Print(text);
 			UnlockedHats = Decode(text);
 			save.Close();
 		}

@@ -93,4 +93,5 @@ quality/driver/fallback_to_gles2=true
 threads/thread_model=2
 quality/filters/anisotropic_filter_level=2
 quality/filters/use_nearest_mipmap_filter=true
+quality/subsurface_scattering/quality=0
 environment/default_environment="res://default_env.tres"

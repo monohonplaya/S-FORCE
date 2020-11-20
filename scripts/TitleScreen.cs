@@ -48,14 +48,17 @@ public class TitleScreen : Spatial
 	public void OnNoneSelect()
 	{
 		GameData.SelectedHat = GameData.Hat.None;
+		GameData.SaveData();
 	}
 	public void OnSForceCapSelect()
 	{
 		GameData.SelectedHat = GameData.Hat.SForceCap;
+		GameData.SaveData();
 	}
 	public void OnPirateHatSelect()
 	{
 		GameData.SelectedHat = GameData.Hat.PirateHat;
+		GameData.SaveData();
 	}
 	public void OnBackPressed()
 	{

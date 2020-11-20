@@ -242,11 +242,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.9264 )
 _rollSpeed = 3.0
 _moveSpeed = 0.5
 
-[node name="tree2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56.9679, 15.9277, 198.036 )
-mesh = ExtResource( 4 )
-material/0 = null
-
 [node name="MeshInstance" type="MeshInstance" parent="."]
 
 [node name="MultiMeshInstance" type="MultiMeshInstance" parent="."]

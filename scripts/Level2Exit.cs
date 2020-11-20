@@ -61,7 +61,7 @@ public class Level2Exit : Spatial
 		_Deaths.Text = deaths + " [" + deathScore.ToString() + "pts]";
 		_Time.Text = String.Format("{0}:{1:D2}.{2:D3}", minutes, seconds, ms) + 
 			" [x" + (30F * 60F / ((float)ms_time / 1000UL)).ToString("n2") + "]";
-		_FinalScore.Text = ((ulong)(((ulong)collectedTKs * 100UL + (ulong)collectedYSFiles * 1000UL + (ulong)deathScore) 
+		_FinalScore.Text = ((ulong)(((ulong)collectedTKs * 100UL + (ulong)collectedYSFiles * 1000UL + (ulong)deathScore + (ulong)YSBonus) 
 			* (30F * 60F / ((float)(ms_time / 1000UL))))).ToString();
 		_scorescreen.Visible = true;
 		GameData.SaveData();
@@ -90,7 +90,7 @@ public class Level2Exit : Spatial
 		GD.Print("Time: " + String.Format("{0}:{1:D2}.{2:D3}", minutes, seconds, ms) + 
 			" [x" + (30F * 60F / ((float)ms_time / 1000UL)).ToString("n2") + "]");
 		GD.Print("Final Score: " + 
-			((ulong)(((ulong)collectedTKs * 100UL + (ulong)collectedYSFiles * 1000UL + (ulong)deathScore) 
+			((ulong)(((ulong)collectedTKs * 100UL + (ulong)collectedYSFiles * 1000UL + (ulong)deathScore + YSBonus) 
 			* (30F * 60F / ((float)(ms_time / 1000UL))))).ToString()
 			);
 	} */
