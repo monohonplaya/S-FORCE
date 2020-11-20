@@ -81,7 +81,7 @@ public class PlayerController : Spatial
     private Label _checkpointNotice;
     private bool _fadeOutNotice = false;
     private bool _ignoreMovement = false;
-
+    private BoneAttachment _hatAttach;
     public override void _Ready()
     {
         GD.Randomize();
@@ -115,11 +115,29 @@ public class PlayerController : Spatial
         if (GameData.SelectedCharacter == GameData.CharSelect.Pink)
         {
             _animTree = (AnimationTree)_player.GetNode("mesh/AnimationTree");
+            _hatAttach = (BoneAttachment)_player.GetNode("mesh/Armature/Skeleton/HatAttach");
         }
         else
         {
             _animTree = (AnimationTree)_player.GetNode("AnimationTree");
+            _hatAttach = (BoneAttachment)_player.GetNode("mesh/Skeleton/HatAttach");
         }
+        if (GameData.SelectedHat != GameData.Hat.None)
+        {
+            PackedScene hat;
+            if (GameData.SelectedHat == GameData.Hat.SForceCap)
+                hat = (PackedScene)ResourceLoader.Load("res://Props/sforcehat.tscn");
+            else
+                hat = (PackedScene)ResourceLoader.Load("res://Props/piratehat.tscn");
+            Spatial hatinst = (Spatial)hat.Instance();
+            _hatAttach.AddChild(hatinst);
+            if(GameData.SelectedCharacter == GameData.CharSelect.Smol)
+            {
+                //hatinst.SetDisableScale(true);
+                hatinst.Scale = new Vector3(.85F,.85F,.85F);
+            }
+        }
+            
         _landRecoveryTimer = (Timer)GetNode("LandRecovery");
         _knockBackTimer = (Timer)GetNode("KnockBack");
         _attackActive = (Timer)GetNode("AttackActive");

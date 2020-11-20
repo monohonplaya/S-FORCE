@@ -1990,7 +1990,7 @@ bones/3/name = "head"
 bones/3/parent = 2
 bones/3/rest = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.316547, 0 )
 bones/3/enabled = true
-bones/3/bound_children = [ NodePath("HatAttach") ]
+bones/3/bound_children = [  ]
 bones/4/name = "upperarmr"
 bones/4/parent = 1
 bones/4/rest = Transform( -0.159346, -0.986981, -0.0218612, 0.987205, -0.15917, -0.00957509, 0.00597078, -0.0231073, 0.999715, -0.418268, 0.76971, -0.0347092 )
@@ -2078,7 +2078,7 @@ skin = SubResource( 2 )
 material/0 = null
 
 [node name="HatAttach" type="BoneAttachment" parent="mesh/Skeleton"]
-transform = Transform( 0.999999, 0.000184729, -0.0017063, -0.000669432, 0.957427, -0.288676, 0.00158033, 0.288677, 0.957425, -2.42927e-11, 3.94853, 1.29101 )
+transform = Transform( 0.999999, 0.000184729, -0.0017063, -0.000631441, 0.964058, -0.265693, 0.00159589, 0.265693, 0.964056, -2.42927e-11, 3.97878, 1.2383 )
 bone_name = "head"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

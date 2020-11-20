@@ -82,7 +82,7 @@ fadeout_time = 0.4
 [sub_resource type="AnimationNodeOneShot" id=18]
 
 [sub_resource type="AnimationNodeBlendTree" id=19]
-graph_offset = Vector2( 1152.41, 34.8 )
+graph_offset = Vector2( 0, 264.763 )
 nodes/Animation/node = SubResource( 9 )
 nodes/Animation/position = Vector2( 288, 96 )
 "nodes/Animation 2/node" = SubResource( 2 )
@@ -108,7 +108,7 @@ nodes/air/position = Vector2( 1536, 320 )
 nodes/attack/node = SubResource( 13 )
 nodes/attack/position = Vector2( 1760, 320 )
 nodes/iwr_blend/node = SubResource( 14 )
-nodes/iwr_blend/position = Vector2( 656, 192 )
+nodes/iwr_blend/position = Vector2( 670, 210 )
 nodes/jump/node = SubResource( 15 )
 nodes/jump/position = Vector2( 1104, 256 )
 nodes/land/node = SubResource( 16 )
@@ -125,11 +125,8 @@ node_connections = [ "output", 0, "squished", "land", 0, "jump", "land", 1, "Ani
 [node name="Armature" parent="." index="0"]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 
-[node name="Skeleton" parent="Armature" index="0"]
-bones/3/bound_children = [ NodePath("HatAttach") ]
-
 [node name="HatAttach" type="BoneAttachment" parent="Armature/Skeleton" index="1"]
-transform = Transform( 0.999998, 0.000184729, -0.0017063, -0.000651504, 0.960632, -0.277822, 0.0015878, 0.277822, 0.960631, -2.42929e-11, 3.96237, 1.26616 )
+transform = Transform( 0.999998, 0.000184729, -0.0017063, -0.000637031, 0.96312, -0.26907, 0.00159366, 0.269071, 0.963119, -2.42929e-11, 3.9738, 1.24606 )
 bone_name = "head"
 
 [node name="AnimationPlayer" parent="." index="1"]

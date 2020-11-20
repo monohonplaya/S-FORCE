@@ -10,6 +10,12 @@ public class GameData : Node
 		Ebil,
 		Smol
 	}
+	public enum Hat
+	{
+		None,
+		SForceCap,
+		PirateHat
+	}
 	private const String _save_path = "user://savedata.json";
 	public static Vector3 RespawnPoint = Vector3.Zero;
 	public static int CollectedTopKek = 0;
@@ -19,14 +25,15 @@ public class GameData : Node
 	public static HashSet<int> CollectedYSSet = new HashSet<int>();
 	public static Godot.Collections.Dictionary<String, bool> UnlockedHats = new Godot.Collections.Dictionary<String, bool>()
 	{
-		{ "Pirate": false },
-		{ "TopLel": false }
+		// { "Pirate": false },
+		// { "TopLel": false }
 	};
 	public static PackedScene TopKekScene;
 	public static ulong ElapsedTime = 0;
 	public static ulong TimerStartTime = 0;
 	public static int Deaths = 0;
 	public static bool TimerRunning = false;
+	public static Hat SelectedHat = Hat.None;
 	public override void _Ready()
 	{
 		TopKekScene = (PackedScene)ResourceLoader.Load("res://Props/topkek.tscn");
@@ -61,9 +68,8 @@ public class GameData : Node
 	}
 	public static void SaveData()
 	{
-		File save = new File();
-		save.Open(_save_path, (int)File.ModeFlags.Write);
-		//save
+		// File save = new File();
+		// save.Open(_save_path, (int)File.ModeFlags.Write);
 	}
 	public static void LoadData()
 	{
