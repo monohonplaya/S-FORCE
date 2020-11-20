@@ -69,6 +69,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Menu" type="VBoxContainer" parent="PauseMenu"]
 anchor_left = 0.4
@@ -83,7 +86,8 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="PauseMenu/Menu"]
 margin_right = 424.0
-margin_bottom = 83.0
+margin_bottom = 154.0
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -91,9 +95,10 @@ text = "Unpause"
 flat = true
 
 [node name="Button4" type="Button" parent="PauseMenu/Menu"]
-margin_top = 87.0
+margin_top = 158.0
 margin_right = 424.0
-margin_bottom = 170.0
+margin_bottom = 312.0
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -101,34 +106,58 @@ text = "YS Files"
 flat = true
 
 [node name="Button5" type="Button" parent="PauseMenu/Menu"]
-margin_top = 174.0
+margin_top = 316.0
 margin_right = 424.0
-margin_bottom = 257.0
+margin_bottom = 472.0
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Toggle Fullscreen"
 flat = true
 
-[node name="Button2" type="Button" parent="PauseMenu/Menu"]
-margin_top = 261.0
-margin_right = 424.0
-margin_bottom = 344.0
+[node name="Menu2" type="VBoxContainer" parent="PauseMenu"]
+anchor_left = 0.7
+anchor_top = 0.6
+anchor_right = 0.96
+anchor_bottom = 0.94
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="PauseMenu/Menu2"]
+margin_top = 110.0
+margin_right = 499.0
+margin_bottom = 193.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Restart"
+flat = true
+align = 2
+
+[node name="Button2" type="Button" parent="PauseMenu/Menu2"]
+margin_top = 197.0
+margin_right = 499.0
+margin_bottom = 280.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Main Menu"
 flat = true
+align = 2
 
-[node name="Button3" type="Button" parent="PauseMenu/Menu"]
-margin_top = 348.0
-margin_right = 424.0
-margin_bottom = 431.0
+[node name="Button3" type="Button" parent="PauseMenu/Menu2"]
+margin_top = 284.0
+margin_right = 499.0
+margin_bottom = 367.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_hover = Color( 0.713726, 1, 0.603922, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Quit"
 flat = true
+align = 2
 
 [node name="YSFileScreen" type="VBoxContainer" parent="PauseMenu"]
 visible = false
@@ -185,8 +214,9 @@ volume_db = -1.0
 [connection signal="pressed" from="PauseMenu/Menu/Button" to="PauseMenu" method="onUnpausePressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Button4" to="PauseMenu" method="onYSFilePressed"]
 [connection signal="pressed" from="PauseMenu/Menu/Button5" to="PauseMenu" method="OnFullscreenTogglePressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Button2" to="PauseMenu" method="onMainMenuPressed"]
-[connection signal="pressed" from="PauseMenu/Menu/Button3" to="PauseMenu" method="onQuitPressed"]
+[connection signal="pressed" from="PauseMenu/Menu2/Restart" to="PauseMenu" method="onRestartPressed"]
+[connection signal="pressed" from="PauseMenu/Menu2/Button2" to="PauseMenu" method="onMainMenuPressed"]
+[connection signal="pressed" from="PauseMenu/Menu2/Button3" to="PauseMenu" method="onQuitPressed"]
 [connection signal="pressed" from="PauseMenu/YSFileScreen/Back" to="PauseMenu" method="onBackPressed"]
 
 [editable path="HUD"]

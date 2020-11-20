@@ -398,6 +398,7 @@ public class PlayerController : Spatial
         _player.Translation = ToLocal(GameData.RespawnPoint);
         _hitpoints = _maxHP;
         GameData.PlayerHealth = _hitpoints;
+        GameData.Deaths += 1;
         _HUD.UpdatePlayerHealth();
     }
     private void HandleMovement(float delta) 

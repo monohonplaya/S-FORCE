@@ -1962,7 +1962,7 @@ nodes/runscale/node = SubResource( 39 )
 nodes/runscale/position = Vector2( 416, 400 )
 nodes/squished/node = SubResource( 40 )
 nodes/squished/position = Vector2( 1984, 336 )
-node_connections = [ "output", 0, "squished", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "runscale", 0, "Animation 3", "TimeScale 3", 0, "Animation 5", "air", 0, "land", "air", 1, "Animation 6", "attack", 0, "air", "attack", 1, "Animation 4", "TimeScale", 0, "Animation 2" ]
+node_connections = [ "output", 0, "squished", "land", 0, "jump", "land", 1, "Animation 7", "squished", 0, "attack", "squished", 1, "Animation 8", "runscale", 0, "Animation 3", "air", 0, "land", "air", 1, "Animation 6", "TimeScale", 0, "Animation 2", "TimeScale 3", 0, "Animation 5", "iwr_blend", 0, "Animation", "iwr_blend", 1, "TimeScale", "iwr_blend", 2, "runscale", "jump", 0, "iwr_blend", "jump", 1, "TimeScale 3", "attack", 0, "air", "attack", 1, "Animation 4" ]
 
 [node name="bearysmol" type="KinematicBody"]
 collision_layer = 2
@@ -1990,7 +1990,7 @@ bones/3/name = "head"
 bones/3/parent = 2
 bones/3/rest = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.316547, 0 )
 bones/3/enabled = true
-bones/3/bound_children = [  ]
+bones/3/bound_children = [ NodePath("HatAttach") ]
 bones/4/name = "upperarmr"
 bones/4/parent = 1
 bones/4/rest = Transform( -0.159346, -0.986981, -0.0218612, 0.987205, -0.15917, -0.00957509, 0.00597078, -0.0231073, 0.999715, -0.418268, 0.76971, -0.0347092 )
@@ -2076,6 +2076,10 @@ bones/19/bound_children = [  ]
 mesh = SubResource( 1 )
 skin = SubResource( 2 )
 material/0 = null
+
+[node name="HatAttach" type="BoneAttachment" parent="mesh/Skeleton"]
+transform = Transform( 0.999999, 0.000184729, -0.0017063, -0.000633424, 0.963727, -0.266891, 0.0015951, 0.266891, 0.963725, -2.42932e-11, 3.9729, 1.24105 )
+bone_name = "head"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.21547, 0 )

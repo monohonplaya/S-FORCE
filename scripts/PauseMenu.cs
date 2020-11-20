@@ -96,6 +96,12 @@ public class PauseMenu : Control
     {
         OS.WindowFullscreen = !OS.WindowFullscreen;
     }
+    public void onRestartPressed()
+    {
+        GetTree().Paused = !GetTree().Paused;
+        GameData.ResetForNewGame();
+        GetTree().ChangeScene("Levels/FirstLevel.tscn");
+    }
     public void onMainMenuPressed()
     {
         GetTree().Paused = !GetTree().Paused;
