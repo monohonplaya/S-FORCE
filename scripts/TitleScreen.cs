@@ -5,10 +5,16 @@ public class TitleScreen : Spatial
 {
 	private Control _credits;
 	private Control _hats;
+	private Button _hatsButton;
+	private CheckBox _SForceCapCheck;
+	private CheckBox _PirateHatCheck;
 	public override void _Ready()
 	{
 		_credits = GetNode<Control>("Control");
 		_hats = GetNode<VBoxContainer>("Control2/HatsVBox");
+		_hatsButton = GetNode<Button>("Control2/VBoxContainer/Hats");
+		_SForceCapCheck =  GetNode<CheckBox>("Control2/HatsVBox/SFORCE Cap");
+		_PirateHatCheck =  GetNode<CheckBox>("Control2/HatsVBox/Pirate Hat");
 		switch (GameData.SelectedHat) {
 			case GameData.Hat.None:
 				_hats.GetChild<CheckBox>(0).Pressed = true;
@@ -20,6 +26,13 @@ public class TitleScreen : Spatial
 				_hats.GetChild<CheckBox>(2).Pressed = true;
 				break;
 		}
+		if (GameData.UnlockedHats["SForceCap"])
+			_SForceCapCheck.Disabled = false;
+		if (GameData.UnlockedHats["PirateHat"])
+			_PirateHatCheck.Disabled = false;
+		if (GameData.UnlockedHats["SForceCap"] || GameData.UnlockedHats["PirateHat"])
+			_hatsButton.Disabled = false;
+
 	}
 	public void _onCampaignPressed()
 	{

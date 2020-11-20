@@ -40,7 +40,10 @@ public class Level2Exit : Spatial
 		int deaths = GameData.Deaths; 
 		int deathScore = deaths * -200;
 		if (deaths == 0)
+		{
 			deathScore += noDeathBonus;
+			GameData.UnlockedHats["SForceCap"] = true;
+		}
 		ulong ms_time = GameData.ElapsedTime;
 		ulong minutes = (ms_time / 1000UL) / 60UL;
 		ulong seconds = (ms_time / 1000UL) % 60UL;
@@ -49,7 +52,10 @@ public class Level2Exit : Spatial
 		_topkeks.Text = collectedTKs + " [" + tkScore + "pts]";
 		_YSFiles.Text = collectedYSFiles + "/" + totalYSFiles + " [" + YSScore + "pts]";
 		if (collectedYSFiles == totalYSFiles)
+		{
 			_YSComplete.Text = " [" + YSBonus.ToString() + "pts]";
+			GameData.UnlockedHats["PirateHat"] = true;
+		}
 		else
 			_YSComplete.Text = " [" + 0.ToString() + "pts]";
 		_Deaths.Text = deaths + " [" + deathScore.ToString() + "pts]";
@@ -58,6 +64,7 @@ public class Level2Exit : Spatial
 		_FinalScore.Text = ((ulong)(((ulong)collectedTKs * 100UL + (ulong)collectedYSFiles * 1000UL + (ulong)deathScore) 
 			* (30F * 60F / ((float)(ms_time / 1000UL))))).ToString();
 		_scorescreen.Visible = true;
+		GameData.SaveData();
 	}
 	/* public static void TestScore(int collectedTKs, int collectedYSFiles, int totalYSFiles, int deaths, ulong ms_time)
 	{

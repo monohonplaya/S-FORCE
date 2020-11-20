@@ -16,18 +16,14 @@ public class GameData : Node
 		SForceCap,
 		PirateHat
 	}
-	private const String _save_path = "user://savedata.json";
+	private const String _save_path = "user://savedata.dat";
 	public static Vector3 RespawnPoint = Vector3.Zero;
 	public static int CollectedTopKek = 0;
 	public static int PlayerHealth;
 	public static CharSelect SelectedCharacter = CharSelect.Smol;
 	public static List<String> YSFiles = new List<String>();
 	public static HashSet<int> CollectedYSSet = new HashSet<int>();
-	public static Godot.Collections.Dictionary<String, bool> UnlockedHats = new Godot.Collections.Dictionary<String, bool>()
-	{
-		// { "Pirate": false },
-		// { "TopLel": false }
-	};
+	public static Dictionary<string, bool> UnlockedHats = new Dictionary<string, bool>();
 	public static PackedScene TopKekScene;
 	public static ulong ElapsedTime = 0;
 	public static ulong TimerStartTime = 0;
@@ -37,6 +33,10 @@ public class GameData : Node
 	public override void _Ready()
 	{
 		TopKekScene = (PackedScene)ResourceLoader.Load("res://Props/topkek.tscn");
+		UnlockedHats.Add("None", true);
+		UnlockedHats.Add("SForceCap", false);
+		UnlockedHats.Add("PirateHat", false);
+		LoadData();
 		// Level2Exit.TestScore(0, 0, 16, 5, 192733);
 	}
 	public static void ResetForNewGame()
@@ -66,14 +66,60 @@ public class GameData : Node
 		}
 			
 	}
+	// Godot's C# is making json impossible so this nonsense is done
+	// might be fixed in more recent version of Godot
+	private static string Encode(Dictionary<string, bool> dict)
+	{
+		string data = "";
+		foreach (string k in dict.Keys)
+		{
+			data += k + "=" + dict[k].ToString() + "\n";
+		}
+		return data;
+	}
+	private static Dictionary<string, bool> Decode(String data)
+	{
+		Dictionary<string, bool> ret = new Dictionary<string, bool>();
+		string[] tmp = data.Split('\n');
+		GD.Print(tmp);
+		foreach(string s in tmp)
+		{
+			string[] kvpair = s.Split('=');
+			if (kvpair.Length > 1)
+				ret.Add(kvpair[0], kvpair[1] == "True" ? true : false);
+		}
+		return ret;
+	}
 	public static void SaveData()
 	{
-		// File save = new File();
-		// save.Open(_save_path, (int)File.ModeFlags.Write);
+		String data = Encode(UnlockedHats);
+		File save = new File();
+		if (save.Open(_save_path, File.ModeFlags.Write) != Error.Ok)
+		{
+			GD.Print("Couldn't write to save file at " + _save_path);
+		}
+		else
+		{
+			save.StoreLine(data);
+			save.Close();
+		}
+		GD.Print(data);
+
 	}
 	public static void LoadData()
 	{
-
+		File save = new File();
+		if (save.Open(_save_path, File.ModeFlags.Read) != Error.Ok)
+		{
+			GD.Print("Couldn't read save file at " + _save_path);
+		}
+		else
+		{
+			string text = save.GetAsText();
+			GD.Print(text);
+			UnlockedHats = Decode(text);
+			save.Close();
+		}
 	}
 
 }

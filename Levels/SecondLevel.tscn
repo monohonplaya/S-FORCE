@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://ModelsAndCollisions/Level2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/PlayerController.tscn" type="PackedScene" id=2]
@@ -36,6 +36,9 @@
 [ext_resource path="res://Fonts/StandardTextFont.tres" type="DynamicFont" id=34]
 [ext_resource path="res://scripts/rotateplatform.cs" type="Script" id=35]
 [ext_resource path="res://Props/bonfire.tscn" type="PackedScene" id=36]
+[ext_resource path="res://glb/letanmillenomgirl.glb" type="PackedScene" id=37]
+[ext_resource path="res://glb/smuchu.glb" type="PackedScene" id=38]
+[ext_resource path="res://glb/pinker.glb" type="PackedScene" id=39]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "cactus"
@@ -1093,6 +1096,12 @@ text = "dont bully me or my friends "
 transform = Transform( 2.70543, -0.135578, -1.28929, 0, 2.98355, -0.313742, 1.2964, 0.282935, 2.69059, -785.468, -94.9375, 1046.89 )
 text = "very kawaii and nice"
 
+[node name="letanmillenomgirl" parent="." instance=ExtResource( 37 )]
+transform = Transform( 9.01195, 0.134862, -0.544587, -0.0647011, 10.7451, 0.0137702, 5.85349, -0.0888612, 0.838591, -1104.89, -7.02804, 899.272 )
+
+[node name="pinker" parent="." instance=ExtResource( 39 )]
+transform = Transform( 8.13462, -3.74927, -0.552515, -3.31065, 5.96553, -0.772611, 6.19277, 8.11409, 0.312729, -1536.41, -151.483, -1430.02 )
+
 [node name="Spikebars" type="Spatial" parent="."]
 
 [node name="Spatial5" parent="Spikebars" instance=ExtResource( 22 )]
@@ -1466,6 +1475,9 @@ custom_fonts/font = ExtResource( 34 )
 custom_colors/font_color_hover = Color( 0.317647, 0.541176, 1, 1 )
 text = "Main Menu"
 flat = true
+
+[node name="smuchu" parent="." instance=ExtResource( 38 )]
+transform = Transform( -4.90137, 0, 0.557962, 0, 5.90622, 0, -3.29545, 0, -0.829866, -1218.2, -71.5312, 528.514 )
 [connection signal="body_entered" from="FallDeathBox" to="FallDeathBox" method="_onFallDeathBoxBodyEntered"]
 [connection signal="body_entered" from="ExitPortal/Area" to="ExitPortal" method="OnPlayerEntered"]
 [connection signal="pressed" from="ExitPortal/Control/Panel/VBoxContainer/Button" to="ExitPortal" method="OnMainMenuPressed"]

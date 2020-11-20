@@ -574,7 +574,7 @@ transform = Transform( 0.465467, 0.0192113, 0.181581, -0.0178977, 0.499631, -0.0
 bones/3/bound_children = [ NodePath("HatAttach") ]
 
 [node name="HatAttach" parent="bearypink/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 0.999904, -0.0138723, 0, 0.0138723, 0.999904, 0, 4.27825, 0.0748198 )
+transform = Transform( 0.954156, 0.00157567, 0.299306, 0.000133127, 0.999984, -0.00568871, -0.29931, 0.00546776, 0.95414, 0, 4.29306, 0.0299875 )
 
 [node name="AnimationTree" parent="bearypink" index="2"]
 parameters/iwr_blend/blend_amount = -1.0
@@ -810,6 +810,7 @@ custom_styles/focus = SubResource( 42 )
 custom_fonts/font = SubResource( 41 )
 custom_colors/font_color_hover = Color( 0, 0.647059, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.0823529, 0.172549, 0.388235, 1 )
+disabled = true
 enabled_focus_mode = 0
 text = "Hats"
 flat = true
@@ -873,6 +874,7 @@ margin_bottom = 539.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color_pressed = Color( 0, 1, 0.552941, 1 )
+disabled = true
 group = ExtResource( 16 )
 text = "SFORCE Cap"
 flat = true
@@ -885,6 +887,7 @@ margin_bottom = 628.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color_pressed = Color( 0, 1, 0.552941, 1 )
+disabled = true
 group = ExtResource( 16 )
 text = "Pirate Hat"
 flat = true
