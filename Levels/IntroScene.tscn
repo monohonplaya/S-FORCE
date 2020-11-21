@@ -570,8 +570,11 @@ autoplay = true
 [node name="bearypink" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.465467, 0.0192113, 0.181581, -0.0178977, 0.499631, -0.00698198, -0.181715, 3.11993e-08, 0.465811, -3.46994, 2.4243, -3.80511 )
 
+[node name="Skeleton" parent="bearypink/Armature" index="0"]
+bones/3/bound_children = [ NodePath("HatAttach") ]
+
 [node name="HatAttach" parent="bearypink/Armature/Skeleton" index="1"]
-transform = Transform( 0.996089, -0.000176443, 0.0883522, 0.000924664, 0.999964, -0.00842776, -0.0883476, 0.0084765, 0.996054, 0, 4.28815, 0.045231 )
+transform = Transform( 0.960837, 0.00138485, 0.277112, 0.000440361, 0.999979, -0.00652421, -0.277115, 0.00639073, 0.960816, 0, 4.29154, 0.0347573 )
 
 [node name="AnimationTree" parent="bearypink" index="2"]
 parameters/iwr_blend/blend_amount = -1.0

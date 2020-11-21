@@ -1,45 +1,5 @@
-﻿<Project Sdk="Godot.NET.Sdk/3.2.3">
+<Project Sdk="Godot.NET.Sdk/3.2.3">
   <PropertyGroup>
-    <ProjectGuid>{280675C7-6060-4D1C-81F5-F8EC8CE8C29A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>sforcegame</RootNamespace>
-    <AssemblyName>sforcegame</AssemblyName>
-    <GodotProjectGeneratorVersion>1.0.0.0</GodotProjectGeneratorVersion>
     <TargetFramework>net472</TargetFramework>
-    <!--The following properties were overriden during migration to prevent errors.
-    Enabling them may require other manual changes to the project and its files.-->
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Deterministic>false</Deterministic>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="scripts\Fwewe.cs" />
-    <Compile Include="scripts\Level2Exit.cs" />
-    <Compile Include="scripts\PathIncrement.cs" />
-    <Compile Include="scripts\CharacterSelect.cs" />
-    <Compile Include="scripts\Goal.cs" />
-    <Compile Include="scripts\speedplatform.cs" />
-    <Compile Include="scripts\GameData.cs" />
-    <Compile Include="scripts\FallDeathBox.cs" />
-    <Compile Include="scripts\PauseMenu.cs" />
-    <Compile Include="scripts\Savepoint.cs" />
-    <Compile Include="scripts\Spikedog.cs" />
-    <Compile Include="scripts\SpikedogGen.cs" />
-    <Compile Include="scripts\SpikyBar.cs" />
-    <Compile Include="scripts\TitleScreen.cs" />
-    <Compile Include="scripts\spikeman.cs" />
-    <Compile Include="scripts\topkek.cs" />
-    <Compile Include="scripts\rotateplatform.cs" />
-    <Compile Include="scripts\DebugInfo.cs" />
-    <Compile Include="scripts\movetest.cs" />
-    <Compile Include="scripts\PlayerController.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="scripts\StateMachine.cs" />
-    <Compile Include="scripts\wheelobstacle.cs" />
-    <Compile Include="scripts\HUD.cs" />
-    <Compile Include="scripts\ysfile.cs" />
-  </ItemGroup>
 </Project>
